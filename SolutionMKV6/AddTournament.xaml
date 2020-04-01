@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AddTournament" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="365,218,0,0" TextWrapping="Wrap" Text="Add" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="365,218,0,0" TextWrapping="Wrap" Text="Thomas" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
