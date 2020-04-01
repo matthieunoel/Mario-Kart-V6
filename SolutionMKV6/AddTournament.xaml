@@ -1,13 +1,13 @@
-﻿<Window x:Class="SolutionMKV6.MainWindow"
+﻿<Window x:Class="SolutionMKV6.AddTournament"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SolutionMKV6"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="AddTournament" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="381,205,0,0" TextWrapping="Wrap" Text="Menu" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="365,218,0,0" TextWrapping="Wrap" Text="Add" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
