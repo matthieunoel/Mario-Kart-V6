@@ -17,11 +17,39 @@ namespace SolutionMKV6
             
         }
 
-        void aaaa()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        bool SendTournamentInfoToBase()
         {
-            Console.WriteLine(this.testvar);
+            return false;
         }
 
-        //public int Testvar { get => testvar; set => testvar = value; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        List<Tournament> GetAllTournaments()
+        {
+            return new List<Tournament>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="TournamentId"></param>
+        /// <returns></returns>
+        Tournament GetTournamentInfo(int TournamentId)
+        {
+            return new Tournament();
+        }
     }
+
+    class Tournament
+    {
+
+    }
+
+
 }
