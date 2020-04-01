@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="SeeTournament" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="391,202,0,0" TextWrapping="Wrap" Text="See" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="175,97,0,0" TextWrapping="Wrap" Text="Suhrob" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
 
     </Grid>
 </Window>
