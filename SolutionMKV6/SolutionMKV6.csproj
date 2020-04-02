@@ -86,9 +86,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ClassePasserelle.cs" />
+    <Compile Include="Joueur.cs" />
+    <Compile Include="Score.cs" />
     <Compile Include="SeeTournament.xaml.cs">
       <DependentUpon>SeeTournament.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tournament.cs" />
     <Page Include="AddTournament.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

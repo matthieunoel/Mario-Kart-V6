@@ -83,10 +83,4 @@ namespace SolutionMKV6
         }
     }
 
-    class Tournament
-    {
-
-    }
-
-
 }
