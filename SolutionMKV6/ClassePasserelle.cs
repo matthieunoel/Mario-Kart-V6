@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Data.Sqlite;
 
 namespace SolutionMKV6
 {
@@ -14,7 +12,25 @@ namespace SolutionMKV6
 
         public ClassePasserelle()
         {
-            
+            using (var connection = new SqliteConnection("Data Source=hello.db"))
+            {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText =
+                @"SELECT nameFROM userWHERE id = $id";
+                command.Parameters.AddWithValue("$id", 1);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var name = reader.GetString(0);
+
+                        Console.WriteLine($"Hello, {name}!");
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -23,6 +39,27 @@ namespace SolutionMKV6
         /// <returns></returns>
         bool SendTournamentInfoToBase()
         {
+
+            using (var connection = new SqliteConnection("Data Source=hello.db"))
+            {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText =
+                @"SELECT nameFROM userWHERE id = $id";
+                command.Parameters.AddWithValue("$id", 1);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var name = reader.GetString(0);
+
+                        Console.WriteLine($"Hello, {name}!");
+                    }
+                }
+            }
+
             return false;
         }
 
