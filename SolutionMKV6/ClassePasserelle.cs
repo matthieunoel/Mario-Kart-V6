@@ -10,6 +10,9 @@ namespace SolutionMKV6
         private string[] listePersonnages;
         public string[] ListePersonnages { get => listePersonnages; set => listePersonnages = value; }
 
+        private string[] listeKarts;
+        public string[] ListeKarts { get => listeKarts; set => listeKarts = value; }
+        
         //private int testvar { get; set; }
 
         public ClassePasserelle()
@@ -65,6 +68,42 @@ namespace SolutionMKV6
                     "Rosalina",
                     "Toadette"
                 };
+
+                this.listeKarts = new string[31] {
+                    "Standard Kart S",
+                    "Booster Seat",
+                    "Mini Beast",
+                    "Standard Kart M",
+                    "Classic Dragster",
+                    "Wild Wing",
+                    "Standard Kart L",
+                    "Offroader",
+                    "Flame Flyer",
+                    "Standard Bike S",
+                    "Bullet Bike",
+                    "Bit Bike",
+                    "Standard Bike M",
+                    "Mach Bike",
+                    "Standard Bike L",
+                    "Wario Bike",
+                    "Flame Runner",
+                    "Tiny Titan",
+                    "Cheep Charger",
+                    "Blue Falcon",
+                    "Daytripper",
+                    "Super Blooper",
+                    "Piranha Prowler",
+                    "Honeycoupe",
+                    "Quacker",
+                    "Jet Bubble",
+                    "Dolphin Dasher",
+                    "Sneakster",
+                    "Zip Zip",
+                    "Shooting Star",
+                    "Phantom"
+                };
+
+
 
             }
         }
