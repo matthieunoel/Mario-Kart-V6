@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Data.Sqlite;
 
 namespace SolutionMKV6
 {
@@ -14,14 +12,75 @@ namespace SolutionMKV6
 
         public ClassePasserelle()
         {
-            
+            using (var connection = new SqliteConnection("Data Source=hello.db"))
+            {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText =
+                @"SELECT nameFROM userWHERE id = $id";
+                command.Parameters.AddWithValue("$id", 1);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var name = reader.GetString(0);
+
+                        Console.WriteLine($"Hello, {name}!");
+                    }
+                }
+            }
         }
 
-        void aaaa()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        bool SendTournamentInfoToBase()
         {
-            Console.WriteLine(this.testvar);
+
+            using (var connection = new SqliteConnection("Data Source=hello.db"))
+            {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText =
+                @"SELECT nameFROM userWHERE id = $id";
+                command.Parameters.AddWithValue("$id", 1);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var name = reader.GetString(0);
+
+                        Console.WriteLine($"Hello, {name}!");
+                    }
+                }
+            }
+
+            return false;
         }
 
-        //public int Testvar { get => testvar; set => testvar = value; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        List<Tournament> GetAllTournaments()
+        {
+            return new List<Tournament>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="TournamentId"></param>
+        /// <returns></returns>
+        Tournament GetTournamentInfo(int TournamentId)
+        {
+            return new Tournament();
+        }
     }
+
 }
