@@ -34,7 +34,22 @@ namespace SolutionMKV6
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Add(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Edit(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Refresh(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Export(object sender, RoutedEventArgs e)
         {
 
         }
