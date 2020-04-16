@@ -24,5 +24,17 @@ namespace SolutionMKV6
         {
             InitializeComponent();
         }
+
+        private void BtnClickAddTournament(object sender, RoutedEventArgs e)
+        {
+            AddTournament add = new AddTournament();
+            this.Content = add.Content; 
+        }
+
+        private void BtnClickSeeTournament(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new SeeTournament();
+        }
+
     }
 }

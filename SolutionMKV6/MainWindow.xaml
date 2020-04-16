@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="381,205,0,0" TextWrapping="Wrap" Text="Simon" VerticalAlignment="Top" Width="120"/>
+        <Frame x:Name="Main" Margin="0,35,0,0"/>
+        <Button  Content="Créer un tournoi" VerticalAlignment="Top" Margin="0,124,92,0" Click="BtnClickAddTournament" HorizontalAlignment="Right"  Width="125"  />
+        <Button  Content="Rejoindre un tournoi" VerticalAlignment="Top" Margin="0,196,92,0" Click="BtnClickSeeTournament" HorizontalAlignment="Right"  Width="125"  />
 
     </Grid>
 </Window>
