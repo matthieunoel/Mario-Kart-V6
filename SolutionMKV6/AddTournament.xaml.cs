@@ -60,9 +60,9 @@ namespace SolutionMKV6
             return authors;
         }
 
-        private void WindowsInitialized(object sender, EventArgs e)
-        {
-            McDataGrid.ItemsSource = LoadCollectionData();
-        }
+        //private void WindowsInitialized(object sender, EventArgs e)
+        //{
+        //    McDataGrid.ItemsSource = LoadCollectionData();
+        //}
     }
 }
