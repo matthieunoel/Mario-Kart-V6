@@ -6,8 +6,14 @@
         xmlns:local="clr-namespace:SolutionMKV6"
         mc:Ignorable="d"
         Title="SeeTournament" Height="450" Width="800">
-    <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="175,97,0,0" TextWrapping="Wrap" Text="Suhrob" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+    <Grid Focusable="True">
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="352,10,0,0" TextWrapping="Wrap" Text="See Tournaments" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" TextAlignment="Center"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="505,72,0,0" VerticalAlignment="Top" Width="187" Height="47" Click="Button_Click"/>
+        <Button HorizontalAlignment="Left" Margin="505,220,0,0" VerticalAlignment="Top" Width="187" Height="47"/>
+        <Button Content="Exit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="187" Height="47" Margin="505,292,0,0"/>
+        <DataGrid HorizontalAlignment="Left" Height="267" Margin="71,72,0,0" VerticalAlignment="Top" Width="317" SelectionChanged="DataGrid_SelectionChanged"/>
+        <Button HorizontalAlignment="Left" Margin="505,141,0,0" VerticalAlignment="Top" Width="187" Height="47" Content="Edit..."/>
+        <Button HorizontalAlignment="Left" Margin="505,220,0,0" VerticalAlignment="Top" Width="187" Height="47" Content="Refresh"/>
 
     </Grid>
 </Window>

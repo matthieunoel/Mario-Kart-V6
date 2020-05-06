@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SolutionMKV6"
         mc:Ignorable="d"
-        Title="AddTournament" Height="450" Width="800">
+        Title="AddTournament" Height="450" Width="800" Background="#FF7D7979">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="365,218,0,0" TextWrapping="Wrap" Text="Thomas" VerticalAlignment="Top" Width="120"/>
-
+        <DataGrid Name="McDataGrid" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="212" Background="#FFF00202" AreRowDetailsFrozen="True" SelectionChanged="McDataGrid_SelectionChanged" Initialized="WindowsInitialized"/>
+        <ListBox HorizontalAlignment="Left" Height="57" Margin="614,10,0,0" VerticalAlignment="Top" Width="170"/>
     </Grid>
 </Window>
