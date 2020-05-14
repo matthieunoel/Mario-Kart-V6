@@ -20,10 +20,7 @@ namespace SolutionMKV6
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+
 
         private void BtnClickAddTournament(object sender, RoutedEventArgs e)
         {
@@ -33,8 +30,9 @@ namespace SolutionMKV6
 
         private void BtnClickSeeTournament(object sender, RoutedEventArgs e)
         {
-            Main.Content = new SeeTournament();
+            SeeTournament see = new SeeTournament();
+            this.Content = see.Content;
         }
 
     }
-}
+}  
