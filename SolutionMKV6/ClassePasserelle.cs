@@ -21,27 +21,31 @@ namespace SolutionMKV6
             {
                 connection.Open();
 
-                var command = connection.CreateCommand();
-                command.CommandText =
-                "CREATE TABLE IF NOT EXIST tournament('id' INT NOT NULL AUTO_INCREMENT, 'nom' TEXT, 'date' DATETIME, 'modeJeu' TEXT, 'vitesse' TEXT, 'avecIA' BOOLEAN, 'avecEquipe' BOOLEAN, PRIMARY KEY('id') )";
-                command.ExecuteNonQuery();
+                //var command = connection.CreateCommand();
+                //command.CommandText =
+                //"CREATE TABLE IF NOT EXIST tournament('id' INT NOT NULL AUTO_INCREMENT, 'nom' TEXT, 'date' DATETIME, 'modeJeu' TEXT, 'vitesse' TEXT, 'avecIA' BOOLEAN, 'avecEquipe' BOOLEAN, PRIMARY KEY('id') )";
+                //command.ExecuteNonQuery();
 
-                command = connection.CreateCommand();
-                command.CommandText =
-                "CREATE TABLE IF NOT EXIST joueur('id' INT NOT NULL AUTO_INCREMENT, 'tournamentId' int, 'nom' TEXT, 'personnage' TEXT, 'kart' TEXT, PRIMARY KEY('id') )";
-                command.ExecuteNonQuery();
+                //command = connection.CreateCommand();
+                //command.CommandText =
+                //"CREATE TABLE IF NOT EXIST joueur('id' INT NOT NULL AUTO_INCREMENT, 'tournamentId' int, 'nom' TEXT, 'personnage' TEXT, 'kart' TEXT, PRIMARY KEY('id') )";
+                //command.ExecuteNonQuery();
 
-                command = connection.CreateCommand();
-                command.CommandText =
-                "CREATE TABLE IF NOT EXIST score('id' INT NOT NULL AUTO_INCREMENT, 'joueurId' int, 'numCourse' int, 'valeur' int, PRIMARY KEY('id') )";
-                command.ExecuteNonQuery();
+                //command = connection.CreateCommand();
+                //command.CommandText =
+                //"CREATE TABLE IF NOT EXIST score('id' INT NOT NULL AUTO_INCREMENT, 'joueurId' int, 'numCourse' int, 'valeur' int, PRIMARY KEY('id') )";
+                //command.ExecuteNonQuery();
 
                 //command = connection.CreateCommand();
                 //command.CommandText =
                 //"CREATE TABLE IF NOT EXIST score('id' INT NOT NULL AUTO_INCREMENT, 'joueurId' int, PRIMARY KEY('id') )";
                 //command.ExecuteNonQuery();
 
-                this.listePersonnages = new string[25] {
+                connection.Close();
+
+            }
+
+            this.listePersonnages = new string[25] {
                    "Baby Mario",
                     "Baby Peach",
                     "Bowser",
@@ -69,7 +73,7 @@ namespace SolutionMKV6
                     "Toadette"
                 };
 
-                this.listeKarts = new string[31] {
+            this.listeKarts = new string[31] {
                     "Standard Kart S",
                     "Booster Seat",
                     "Mini Beast",
@@ -102,10 +106,6 @@ namespace SolutionMKV6
                     "Shooting Star",
                     "Phantom"
                 };
-
-
-
-            }
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace SolutionMKV6
         /// 
         /// </summary>
         /// <returns></returns>
-        List<Tournament> GetAllTournaments()
+        public List<Tournament> GetAllTournaments()
         {
 
             //using (var connection = new SqliteConnection("Data Source=database.db"))
