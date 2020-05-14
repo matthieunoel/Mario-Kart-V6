@@ -182,23 +182,31 @@ namespace SolutionMKV6
             //    }
 
 
-                //command = connection.CreateCommand();
-                //command.CommandText =
-                //@"SELECT * FROM touranment";
-                //command.Parameters.AddWithValue("$id", 1);
+            //command = connection.CreateCommand();
+            //command.CommandText =
+            //@"SELECT * FROM touranment";
+            //command.Parameters.AddWithValue("$id", 1);
 
-                //using (var reader = command.ExecuteReader())
-                //{
-                //    while (reader.Read())
-                //    {
-                //        var name = reader.GetString(0);
+            //using (var reader = command.ExecuteReader())
+            //{
+            //    while (reader.Read())
+            //    {
+            //        var name = reader.GetString(0);
 
-                //        Console.WriteLine($"Hello, {name}!");
-                //    }
-                //}
+            //        Console.WriteLine($"Hello, {name}!");
+            //    }
+            //}
             //}
 
-            return new List<Tournament>();
+            List<Tournament> ListeTest = new List<Tournament>();
+            Joueur[] TabJoueurs = new Joueur[4];
+            TabJoueurs[0] = new Joueur("Nom test1", "Personnage test1", "Kart test1");
+            TabJoueurs[1] = new Joueur("Nom test2", "Personnage test2", "Kart test2");
+            TabJoueurs[2] = new Joueur("Nom test3", "Personnage test3", "Kart test3");
+            TabJoueurs[3] = new Joueur("Nom test4", "Personnage test4", "Kart test4");
+            ListeTest.Add(new Tournament("TournoiTest1", new DateTime(), "Mode de Jeu Test", "Vitesse test", false, false, TabJoueurs));
+
+            return ListeTest;
         }
 
         /// <summary>
