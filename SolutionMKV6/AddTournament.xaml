@@ -7,7 +7,43 @@
         mc:Ignorable="d"
         Title="AddTournament" Height="450" Width="800" Background="#FF7D7979">
     <Grid>
-        <!--<DataGrid Name="McDataGrid" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="212" Background="#FFF00202" AreRowDetailsFrozen="True" SelectionChanged="McDataGrid_SelectionChanged" Initialized="WindowsInitialized"/>-->
-        <ListBox HorizontalAlignment="Left" Height="57" Margin="614,10,0,0" VerticalAlignment="Top" Width="170"/>
+        <DataGrid Name="McDataGrid" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="306" Background="#FFF00202" AreRowDetailsFrozen="True" SelectionChanged="DataGrid_SelectionChanged" />
+        <ListBox HorizontalAlignment="Left" Margin="510,106,0,0" VerticalAlignment="Top" Width="180" Height="40">
+            <ListBoxItem>
+                Carotte
+            </ListBoxItem>
+            <ListBoxItem>
+                carotte bleu
+            </ListBoxItem>
+        </ListBox>
+        <ListBox HorizontalAlignment="Left" Margin="510,176,0,0" VerticalAlignment="Top" Width="180"  Height="40">
+            <ListBoxItem>
+                patate
+            </ListBoxItem>
+        </ListBox>
+        <ListBox HorizontalAlignment="Left" Margin="510,243,0,0" VerticalAlignment="Top" Width="180" Height="40">
+            <ListBoxItem>
+                Oui
+            </ListBoxItem>
+            <ListBoxItem>
+                Non
+            </ListBoxItem>
+        </ListBox>
+        <ListBox HorizontalAlignment="Left" Margin="510,313,0,0" VerticalAlignment="Top" Width="180" Height="40">
+            <ListBoxItem>
+                Oui
+            </ListBoxItem>
+            <ListBoxItem>
+                Non
+            </ListBoxItem>
+        </ListBox>
+        <Label Content="Mode de jeu :" HorizontalAlignment="Left" Margin="422,106,0,0" VerticalAlignment="Top"/>
+        <Label Content="   " HorizontalAlignment="Left" Margin="384,17,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nom du Tournoi :" HorizontalAlignment="Left" Margin="358,5,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Name="Nom_du_tournoi" Text="" Height="23" Margin="460,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Vitesse :" HorizontalAlignment="Left" Margin="462,176,0,0" VerticalAlignment="Top"/>
+        <Label Content="Avec IA :" HorizontalAlignment="Left" Margin="456,243,0,0" VerticalAlignment="Top"/>
+        <Label Content="Par Equipe :" HorizontalAlignment="Left" Margin="438,313,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
