@@ -36,6 +36,16 @@ namespace SolutionMKV6
             this.Joueurs = new Joueur[12] { null, null, null, null, null, null, null, null, null, null, null, null };
         }
 
+        public Tournament(string nom, string modeJeu, string vitesse, bool avecIA, bool enEquipe, Joueur[] joueurs)
+        {
+            this.Nom = nom;
+            this.ModeJeu = modeJeu;
+            this.Vitesse = vitesse;
+            this.AvecIA = avecIA;
+            this.EnEquipe = enEquipe;
+            this.Joueurs = joueurs;
+        }
+
         public Tournament(string nom, DateTime date, string modeJeu, string vitesse, bool avecIA, bool enEquipe, Joueur[] joueurs)
         {
             this.Nom = nom;
