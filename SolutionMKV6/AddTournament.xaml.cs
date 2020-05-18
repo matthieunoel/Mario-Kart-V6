@@ -22,7 +22,7 @@ namespace SolutionMKV6
 
         private ClassePasserelle passerelle;
 
-        public AddTournament()
+        public AddTournament(ClassePasserelle passerelle)
         {
             InitializeComponent();
             this.passerelle = passerelle;
