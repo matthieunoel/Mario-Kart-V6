@@ -12,26 +12,13 @@
             <RowDefinition Height="7*"/>
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
-        <DataGrid Name="MonDataGrid" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="306" Background="Blue" AreRowDetailsFrozen="True" SelectionChanged="DataGrid_SelectionChanged" Grid.RowSpan="2">
+        <DataGrid Name="MonDataGrid" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="320" Background="White" AutoGenerateColumns="False" BorderThickness="0" Grid.RowSpan="2" RowHeight="42">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Pseudo"  Binding="{Binding Pseudo}"/>
-                <DataGridComboBoxColumn Header="Personnage" x:Name="ListeKart" SelectedItemBinding="{Binding Personnage}" />
-                <DataGridTextColumn Header="Kart"  Binding="{Binding Kart}"/>
+                <DataGridTextColumn Header="Pseudo" Width="106" Binding="{Binding Nom}"/>
+                <DataGridComboBoxColumn Header="Personnage" Width="106" x:Name="ListePerso" SelectedItemBinding="{Binding Personnage}" />
+                <DataGridComboBoxColumn Header="Kart" MinWidth="102" MaxWidth="200" x:Name="ListeKart" SelectedItemBinding="{Binding Kart}" />
             </DataGrid.Columns>
         </DataGrid>
-        <ListBox HorizontalAlignment="Left" Margin="510,106,0,0" VerticalAlignment="Top" Width="180" Height="40">
-            <ListBoxItem>
-                Carotte
-            </ListBoxItem>
-            <ListBoxItem>
-                carotte bleu
-            </ListBoxItem>
-        </ListBox>
-        <ListBox HorizontalAlignment="Left" Margin="510,176,0,0" VerticalAlignment="Top" Width="180"  Height="40" Grid.RowSpan="2">
-            <ListBoxItem>
-                patate
-            </ListBoxItem>
-        </ListBox>
         <Label Content="Mode de jeu :" HorizontalAlignment="Left" Margin="426,106,0,0" VerticalAlignment="Top"/>
         <Label Content="   " HorizontalAlignment="Left" Margin="384,17,0,0" VerticalAlignment="Top"/>
         <Label Content="Nom du Tournoi :" HorizontalAlignment="Left" Margin="358,5,0,0" VerticalAlignment="Top"/>
@@ -41,6 +28,9 @@
         <Label Content="Par Equipe :" HorizontalAlignment="Left" Margin="438,117.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <CheckBox HorizontalAlignment="Left" Margin="515,124.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <CheckBox HorizontalAlignment="Left" Margin="515,54.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <Button Content="Ajouter" HorizontalAlignment="Left" Margin="660,172,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" Height="42" Click="Button_Ajouter" />
+        <ComboBox x:Name="ListeVitesse" HorizontalAlignment="Left" Margin="509,176,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="ListeModeJeu" HorizontalAlignment="Left" Margin="509,108,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

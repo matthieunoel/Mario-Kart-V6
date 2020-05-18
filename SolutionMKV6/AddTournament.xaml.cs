@@ -27,17 +27,20 @@ namespace SolutionMKV6
             InitializeComponent();
             this.passerelle = passerelle;
 
-            string[] tableTest = new string[] { "Toi", "Moi", "Nous" };
-            this.ListeKart.ItemsSource = tableTest;
+            
+            this.ListeKart.ItemsSource = passerelle.ListeKarts;
+            this.ListePerso.ItemsSource = passerelle.ListePersonnages;
+            //this.ListeModeJeu.ItemsSource = passerelle.
+            //this.ListeVitesse.ItemsSource = passerelle.
 
-            Joueur Moi = new Joueur("", "-", "-");
-            Joueur Moi2 = new Joueur("", "-", "-");
-            Joueur Moi3 = new Joueur("", "-", "-");
-            Joueur Moi4 = new Joueur("", "-", "-");
-            Joueur Moi5 = new Joueur("", "-", "-");
-            Joueur Moi6 = new Joueur("", "-", "-");
-            Joueur Moi7 = new Joueur("", "-", "-");
-            Joueur Moi8 = new Joueur("", "-", "-");
+            Joueur Moi = new Joueur();
+            Joueur Moi2 = new Joueur();
+            Joueur Moi3 = new Joueur();
+            Joueur Moi4 = new Joueur();
+            Joueur Moi5 = new Joueur();
+            Joueur Moi6 = new Joueur();
+            Joueur Moi7 = new Joueur();
+            Joueur Moi8 = new Joueur();
 
             Joueur[] JoueurTable = new Joueur[8] { Moi, Moi2, Moi3, Moi4, Moi5, Moi6, Moi7, Moi8 };
 
@@ -49,9 +52,20 @@ namespace SolutionMKV6
             this.MonDataGrid.ItemsSource = JoueurTable;
         }
 
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Ajouter(object sender, TextChangedEventArgs e)
         {
+            //passerelle.AddTournament(new Tournament("TournoiTest", "ModeJeu", "Vitesse", false, true,
+            //        new Joueur[8] {
+            //            new Joueur("Pseudo", "Perso", "Kart"),
+            //            new Joueur("Pseudo", "Perso", "Kart"),
+            //            new Joueur("Pseudo", "Perso", "Kart"),
+            //            new Joueur("Pseudo", "Perso", "Kart"),
+            //            new Joueur("Pseudo", "Perso", "Kart"),
+            //            new Joueur("Pseudo", "Perso", "Kart"),
+            //            new Joueur("Pseudo", "Perso", "Kart"),
+            //           new Joueur("Pseudo", "Perso", "Kart")
+            //        }
+            //    ));
 
         }
 

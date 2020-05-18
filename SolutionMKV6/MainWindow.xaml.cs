@@ -31,7 +31,7 @@ namespace SolutionMKV6
 
         private void BtnClickSeeTournament(object sender, RoutedEventArgs e)
         {
-            SeeTournament see = new SeeTournament();
+            SeeTournament see = new SeeTournament(this.passerelle);
             this.Content = see.Content;
         }
 
