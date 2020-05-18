@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
-using Microsoft.Data.Sqlite;
+using System.Windows;
 
 namespace SolutionMKV6
 {
     public class ClassePasserelle
     {
         //private const string DbString = "va-11 hall-a";
+        private string filePath = "data.db";
+
         private string[] listePersonnages;
         public string[] ListePersonnages { get => listePersonnages; set => listePersonnages = value; }
 
@@ -21,23 +24,23 @@ namespace SolutionMKV6
 
         public ClassePasserelle()
         {
-            using (var connection = new SqliteConnection("Data Source=data.db"))
+            using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
             {
                 connection.Open();
 
                 var command = connection.CreateCommand();
                 command.CommandText =
-                "CREATE TABLE IF NOT EXISTS tournament('id' INT PRIMARY KEY, 'nom' TEXT, 'date' DATETIME, 'modeJeu' TEXT, 'vitesse' TEXT, 'avecIA' BOOLEAN, 'avecEquipe' BOOLEAN)";
+                "CREATE TABLE IF NOT EXISTS tournament('id' INTEGER PRIMARY KEY AUTOINCREMENT , 'nom' TEXT, 'date' DATETIME, 'modeJeu' TEXT, 'vitesse' TEXT, 'avecIA' BOOLEAN, 'avecEquipe' BOOLEAN)";
                 command.ExecuteNonQuery();
 
                 command = connection.CreateCommand();
                 command.CommandText =
-                "CREATE TABLE IF NOT EXISTS joueur('id' INT PRIMARY KEY, 'tournamentId' int, 'nom' TEXT, 'personnage' TEXT, 'kart' TEXT)";
+                "CREATE TABLE IF NOT EXISTS joueur('id' INTEGER PRIMARY KEY AUTOINCREMENT , 'tournamentId' int, 'nom' TEXT, 'personnage' TEXT, 'kart' TEXT)";
                 command.ExecuteNonQuery();
 
                 command = connection.CreateCommand();
                 command.CommandText =
-                "CREATE TABLE IF NOT EXISTS score('id' INT PRIMARY KEY, 'joueurId' int, 'numCourse' int, 'valeur' int)";
+                "CREATE TABLE IF NOT EXISTS score('id' INTEGER PRIMARY KEY AUTOINCREMENT , 'joueurId' int, 'numCourse' int, 'valeur' int)";
                 command.ExecuteNonQuery();
 
                 //command = connection.CreateCommand();
@@ -119,7 +122,7 @@ namespace SolutionMKV6
                 "Miroir"
             };
 
-            this.modesJeu = new string[4] 
+            this.modesJeu = new string[4]
             {
                 "Grand Prix",
                 "Contre-la-montre",
@@ -167,7 +170,7 @@ namespace SolutionMKV6
 
             List<Tournament> ListeTournament = new List<Tournament>();
 
-            using (var connection = new SqliteConnection("Data Source=data.db"))
+            using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
             {
                 connection.Open();
 
@@ -179,18 +182,37 @@ namespace SolutionMKV6
                     while (reader.Read())
                     {
 
-                        Console.WriteLine(reader);
+                        Joueur[] TabJoueurs = new Joueur[8];
+                        int i = 0;
+                        command = connection.CreateCommand();
+                        command.CommandText =
+                            $"SELECT id, nom, personnage, kart FROM joueur WHERE tournamentId={reader.GetInt64(0)}";
+                        using (var readerJoueur = command.ExecuteReader())
+                        {
+                            while (readerJoueur.Read())
+                            {
 
-                        //command = connection.CreateCommand();
-                        //command.CommandText =
-                        //    $"SELECT nom, personnage, kart WHERE tournamentId={reader.GetInt32(0)}";
+                                List<Score> scores = new List<Score>();
 
-                        ListeTournament.Add( new Tournament( reader.GetString(1), reader.GetDateTime(2), reader.GetString(3), reader.GetString(4), reader.GetBoolean(5), reader.GetBoolean(6), new Joueur[8] ));
+                                command = connection.CreateCommand();
+                                command.CommandText =
+                                    $"SELECT numCourse, valeur FROM score WHERE joueurId={readerJoueur.GetInt64(0)}";
+                                using (var readerScore = command.ExecuteReader())
+                                {
+                                    while (readerScore.Read())
+                                    {
+                                        scores.Add( new Score((int)readerScore.GetInt64(0), (int)readerScore.GetInt64(1)) );
+                                    }
+                                }
+
+                                TabJoueurs[i] = new Joueur(readerJoueur.GetString(1), readerJoueur.GetString(2), readerJoueur.GetString(3));
+                                i++;
+                            }
+                        }
+
+                        ListeTournament.Add(new Tournament(reader.GetString(1), reader.GetDateTime(2), reader.GetString(3), reader.GetString(4), reader.GetBoolean(5), reader.GetBoolean(6), TabJoueurs));
                     }
                 }
-
-                
-                
 
                 connection.Close();
 
@@ -211,7 +233,7 @@ namespace SolutionMKV6
 
         public void AddTournament(Tournament tournament)
         {
-            using (var connection = new SqliteConnection("Data Source=data.db"))
+            using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
             {
                 connection.Open();
 
@@ -237,6 +259,16 @@ namespace SolutionMKV6
                 connection.Close();
 
             }
+        }
+
+        public void addScoreToJoueur()
+        {
+
+        }
+
+        public void editScore()
+        {
+
         }
 
         /// <summary>
@@ -271,7 +303,7 @@ namespace SolutionMKV6
         //            }
         //        }
         //    }
-            
+
         //    return new List<Joueur>();
         //}
     }
