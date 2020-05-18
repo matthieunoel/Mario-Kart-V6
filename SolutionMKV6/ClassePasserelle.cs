@@ -12,8 +12,12 @@ namespace SolutionMKV6
 
         private string[] listeKarts;
         public string[] ListeKarts { get => listeKarts; set => listeKarts = value; }
-        
-        //private int testvar { get; set; }
+
+        private string[] vitesses;
+        public string[] Vitesses { get => vitesses; set => vitesses = value; }
+
+        private string[] modesJeu;
+        public string[] ModesJeu { get => modesJeu; set => modesJeu = value; }
 
         public ClassePasserelle()
         {
@@ -38,13 +42,8 @@ namespace SolutionMKV6
 
                 //command = connection.CreateCommand();
                 //command.CommandText =
-                //"CREATE TABLE IF NOT EXISTS score('id' INT NOT NULL AUTO_INCREMENT, 'joueurId' int, PRIMARY KEY('id') )";
+                //"INSERT INTO tournament (nom, date, modeJeu, vitesse, avecIA, avecEquipe) VALUES ('TournoiTest', datetime('now', 'localtime'), 'ModeJeuTest', '12.798Cc', false, false)";
                 //command.ExecuteNonQuery();
-
-                command = connection.CreateCommand();
-                command.CommandText =
-                "INSERT INTO tournament (nom, date, modeJeu, vitesse, avecIA, avecEquipe) VALUES ('TournoiTest', date('now'), 'ModeJeuTest', '12.798Cc', false, false)";
-                command.ExecuteNonQuery();
 
                 connection.Close();
 
@@ -111,37 +110,53 @@ namespace SolutionMKV6
                     "Shooting Star",
                     "Phantom"
                 };
+
+            this.vitesses = new string[4]
+            {
+                "50Cc",
+                "100Cc",
+                "150Cc",
+                "Miroir"
+            };
+
+            this.modesJeu = new string[4] 
+            {
+                "Grand Prix",
+                "Contre-la-montre",
+                "Course VS",
+                "Bataille"
+            };
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        bool SendTournamentInfoToBase()
-        {
+        //bool SendTournamentInfoToBase()
+        //{
 
-            //using (var connection = new SqliteConnection("Data Source=hello.db"))
-            //{
-            //    connection.Open();
+        //    //using (var connection = new SqliteConnection("Data Source=hello.db"))
+        //    //{
+        //    //    connection.Open();
 
-            //    var command = connection.CreateCommand();
-            //    command.CommandText =
-            //    @"SELECT nameFROM userWHERE id = $id";
-            //    command.Parameters.AddWithValue("$id", 1);
+        //    //    var command = connection.CreateCommand();
+        //    //    command.CommandText =
+        //    //    @"SELECT nameFROM userWHERE id = $id";
+        //    //    command.Parameters.AddWithValue("$id", 1);
 
-            //    using (var reader = command.ExecuteReader())
-            //    {
-            //        while (reader.Read())
-            //        {
-            //            var name = reader.GetString(0);
+        //    //    using (var reader = command.ExecuteReader())
+        //    //    {
+        //    //        while (reader.Read())
+        //    //        {
+        //    //            var name = reader.GetString(0);
 
-            //            Console.WriteLine($"Hello, {name}!");
-            //        }
-            //    }
-            //}
+        //    //            Console.WriteLine($"Hello, {name}!");
+        //    //        }
+        //    //    }
+        //    //}
 
-            return false;
-        }
+        //    return false;
+        //}
 
         /// <summary>
         /// 
@@ -158,17 +173,24 @@ namespace SolutionMKV6
 
                 var command = connection.CreateCommand();
                 command.CommandText =
-                "SELECT nom, date, modeJeu, vitesse, avecIA, avecEquipe FROM tournament";
-                //command.ExecuteNonQuery();
-
+                "SELECT id, nom, date, modeJeu, vitesse, avecIA, avecEquipe FROM tournament";
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        var name = reader.GetString(0);
-                        Console.WriteLine(name);
+
+                        Console.WriteLine(reader);
+
+                        //command = connection.CreateCommand();
+                        //command.CommandText =
+                        //    $"SELECT nom, personnage, kart WHERE tournamentId={reader.GetInt32(0)}";
+
+                        ListeTournament.Add( new Tournament( reader.GetString(1), reader.GetDateTime(2), reader.GetString(3), reader.GetString(4), reader.GetBoolean(5), reader.GetBoolean(6), new Joueur[8] ));
                     }
                 }
+
+                
+                
 
                 connection.Close();
 
@@ -187,15 +209,45 @@ namespace SolutionMKV6
             //return ListeTest;
         }
 
+        public void AddTournament(Tournament tournament)
+        {
+            using (var connection = new SqliteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText =
+                $"INSERT INTO tournament (nom, date, modeJeu, vitesse, avecIA, avecEquipe) VALUES ('{tournament.Nom}', datetime('now', 'localtime'), '{tournament.ModeJeu}', '{tournament.Vitesse}', {tournament.AvecIA}, {tournament.EnEquipe})";
+                command.ExecuteNonQuery();
+
+
+                command.CommandText = "select last_insert_rowid()";
+
+                Int64 LastRowID64 = (Int64)command.ExecuteScalar();
+
+
+                foreach (Joueur joueur in tournament.Joueurs)
+                {
+                    command = connection.CreateCommand();
+                    command.CommandText =
+                    $"INSERT INTO joueur (tournamentId, nom, personnage, kart) VALUES ({(int)LastRowID64}, '{joueur.Nom}', '{joueur.Personnage}', '{joueur.Kart}');";
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close();
+
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="TournamentId"></param>
         /// <returns></returns>
-        Tournament GetTournamentInfo(int TournamentId)
-        {
-            return new Tournament();
-        }
+        //Tournament GetTournamentInfo(int TournamentId)
+        //{
+        //    return new Tournament();
+        //}
 
         //List<Joueur> GetAllJoueurs()
         //{
