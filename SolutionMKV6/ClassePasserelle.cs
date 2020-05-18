@@ -4,7 +4,7 @@ using Microsoft.Data.Sqlite;
 
 namespace SolutionMKV6
 {
-    class ClassePasserelle
+    public class ClassePasserelle
     {
         //private const string DbString = "va-11 hall-a";
         private string[] listePersonnages;
@@ -17,29 +17,34 @@ namespace SolutionMKV6
 
         public ClassePasserelle()
         {
-            using (var connection = new SqliteConnection("Data Source=hello.db"))
+            using (var connection = new SqliteConnection("Data Source=data.db"))
             {
                 connection.Open();
 
-                //var command = connection.CreateCommand();
-                //command.CommandText =
-                //"CREATE TABLE IF NOT EXIST tournament('id' INT NOT NULL AUTO_INCREMENT, 'nom' TEXT, 'date' DATETIME, 'modeJeu' TEXT, 'vitesse' TEXT, 'avecIA' BOOLEAN, 'avecEquipe' BOOLEAN, PRIMARY KEY('id') )";
-                //command.ExecuteNonQuery();
+                var command = connection.CreateCommand();
+                command.CommandText =
+                "CREATE TABLE IF NOT EXISTS tournament('id' INT PRIMARY KEY, 'nom' TEXT, 'date' DATETIME, 'modeJeu' TEXT, 'vitesse' TEXT, 'avecIA' BOOLEAN, 'avecEquipe' BOOLEAN)";
+                command.ExecuteNonQuery();
+
+                command = connection.CreateCommand();
+                command.CommandText =
+                "CREATE TABLE IF NOT EXISTS joueur('id' INT PRIMARY KEY, 'tournamentId' int, 'nom' TEXT, 'personnage' TEXT, 'kart' TEXT)";
+                command.ExecuteNonQuery();
+
+                command = connection.CreateCommand();
+                command.CommandText =
+                "CREATE TABLE IF NOT EXISTS score('id' INT PRIMARY KEY, 'joueurId' int, 'numCourse' int, 'valeur' int)";
+                command.ExecuteNonQuery();
 
                 //command = connection.CreateCommand();
                 //command.CommandText =
-                //"CREATE TABLE IF NOT EXIST joueur('id' INT NOT NULL AUTO_INCREMENT, 'tournamentId' int, 'nom' TEXT, 'personnage' TEXT, 'kart' TEXT, PRIMARY KEY('id') )";
+                //"CREATE TABLE IF NOT EXISTS score('id' INT NOT NULL AUTO_INCREMENT, 'joueurId' int, PRIMARY KEY('id') )";
                 //command.ExecuteNonQuery();
 
-                //command = connection.CreateCommand();
-                //command.CommandText =
-                //"CREATE TABLE IF NOT EXIST score('id' INT NOT NULL AUTO_INCREMENT, 'joueurId' int, 'numCourse' int, 'valeur' int, PRIMARY KEY('id') )";
-                //command.ExecuteNonQuery();
-
-                //command = connection.CreateCommand();
-                //command.CommandText =
-                //"CREATE TABLE IF NOT EXIST score('id' INT NOT NULL AUTO_INCREMENT, 'joueurId' int, PRIMARY KEY('id') )";
-                //command.ExecuteNonQuery();
+                command = connection.CreateCommand();
+                command.CommandText =
+                "INSERT INTO tournament (nom, date, modeJeu, vitesse, avecIA, avecEquipe) VALUES ('TournoiTest', date('now'), 'ModeJeuTest', '12.798Cc', false, false)";
+                command.ExecuteNonQuery();
 
                 connection.Close();
 
@@ -198,15 +203,41 @@ namespace SolutionMKV6
             //}
             //}
 
-            List<Tournament> ListeTest = new List<Tournament>();
-            Joueur[] TabJoueurs = new Joueur[4];
-            TabJoueurs[0] = new Joueur("Nom test1", "Personnage test1", "Kart test1");
-            TabJoueurs[1] = new Joueur("Nom test2", "Personnage test2", "Kart test2");
-            TabJoueurs[2] = new Joueur("Nom test3", "Personnage test3", "Kart test3");
-            TabJoueurs[3] = new Joueur("Nom test4", "Personnage test4", "Kart test4");
-            ListeTest.Add(new Tournament("TournoiTest1", new DateTime(), "Mode de Jeu Test", "Vitesse test", false, false, TabJoueurs));
+            List<Tournament> ListeTournament = new List<Tournament>();
 
-            return ListeTest;
+            using (var connection = new SqliteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText =
+                "SELECT nom, date, modeJeu, vitesse, avecIA, avecEquipe FROM tournament";
+                //command.ExecuteNonQuery();
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var name = reader.GetString(0);
+                        Console.WriteLine(name);
+                    }
+                }
+
+                connection.Close();
+
+            }
+
+            return ListeTournament;
+
+            //List<Tournament> ListeTest = new List<Tournament>();
+            //Joueur[] TabJoueurs = new Joueur[4];
+            //TabJoueurs[0] = new Joueur("Nom test1", "Personnage test1", "Kart test1");
+            //TabJoueurs[1] = new Joueur("Nom test2", "Personnage test2", "Kart test2");
+            //TabJoueurs[2] = new Joueur("Nom test3", "Personnage test3", "Kart test3");
+            //TabJoueurs[3] = new Joueur("Nom test4", "Personnage test4", "Kart test4");
+            //ListeTest.Add(new Tournament("TournoiTest1", new DateTime(), "Mode de Jeu Test", "Vitesse test", false,  false, TabJoueurs));
+
+            //return ListeTest;
         }
 
         /// <summary>
