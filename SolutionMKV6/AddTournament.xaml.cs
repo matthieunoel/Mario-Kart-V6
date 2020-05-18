@@ -52,22 +52,22 @@ namespace SolutionMKV6
             this.MonDataGrid.ItemsSource = JoueurTable;
         }
 
-        private void Button_Ajouter(object sender, TextChangedEventArgs e)
-        {
-            //passerelle.AddTournament(new Tournament("TournoiTest", "ModeJeu", "Vitesse", false, true,
-            //        new Joueur[8] {
-            //            new Joueur("Pseudo", "Perso", "Kart"),
-            //            new Joueur("Pseudo", "Perso", "Kart"),
-            //            new Joueur("Pseudo", "Perso", "Kart"),
-            //            new Joueur("Pseudo", "Perso", "Kart"),
-            //            new Joueur("Pseudo", "Perso", "Kart"),
-            //            new Joueur("Pseudo", "Perso", "Kart"),
-            //            new Joueur("Pseudo", "Perso", "Kart"),
-            //           new Joueur("Pseudo", "Perso", "Kart")
-            //        }
-            //    ));
+        //private void Button_Ajouter1(object sender, TextChangedEventArgs e)
+        //{
+        //    //passerelle.AddTournament(new Tournament("TournoiTest", "ModeJeu", "Vitesse", false, true,
+        //    //        new Joueur[8] {
+        //    //            new Joueur("Pseudo", "Perso", "Kart"),
+        //    //            new Joueur("Pseudo", "Perso", "Kart"),
+        //    //            new Joueur("Pseudo", "Perso", "Kart"),
+        //    //            new Joueur("Pseudo", "Perso", "Kart"),
+        //    //            new Joueur("Pseudo", "Perso", "Kart"),
+        //    //            new Joueur("Pseudo", "Perso", "Kart"),
+        //    //            new Joueur("Pseudo", "Perso", "Kart"),
+        //    //           new Joueur("Pseudo", "Perso", "Kart")
+        //    //        }
+        //    //    ));
 
-        }
+        //}
 
 
     }
