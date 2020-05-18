@@ -21,16 +21,17 @@ namespace SolutionMKV6
     public partial class MainWindow : Window
     {
         private ClassePasserelle passerelle;
+        private List<Tournament> tournamentList;
 
         private void BtnClickAddTournament(object sender, RoutedEventArgs e)
         {
-            AddTournament add = new AddTournament(passerelle);
+            AddTournament add = new AddTournament(this.passerelle);
             this.Content = add.Content; 
         }
 
         private void BtnClickSeeTournament(object sender, RoutedEventArgs e)
         {
-            SeeTournament see = new SeeTournament(passerelle);
+            SeeTournament see = new SeeTournament();
             this.Content = see.Content;
         }
 
@@ -41,14 +42,9 @@ namespace SolutionMKV6
 
         private void Initialized(object sender, EventArgs e)
         {
-            passerelle = new ClassePasserelle();
-            tournamentList = passerelle.GetAllTournaments();
+            this.passerelle = new ClassePasserelle();
+            this.tournamentList = passerelle.GetAllTournaments();
             this.mainDataGrid.ItemsSource = tournamentList;
-
-        }
-
-        private Tournament tournamentList
-        {
 
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SolutionMKV6
 {
-    class Joueur
+    public class Joueur
     {
         private string nom;
         private string personnage;
