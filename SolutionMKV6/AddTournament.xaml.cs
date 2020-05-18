@@ -19,57 +19,34 @@ namespace SolutionMKV6
     /// </summary>
     public partial class AddTournament : Window
     {
-        //public class Author
-        //{
-        //    public int ID { get; set; }
-        //    public string Name { get; set; }
-        //    public DateTime DOB { get; set; }
-        //    public string BookTitle { get; set; }
-        //    public bool IsMVP { get; set; }
-        //}
-        //private List<Author> LoadCollectionData()
-        //{
-        //    List<Author> authors = new List<Author>();
-        //    authors.Add(new Author()
-        //    {
-        //        ID = 101,
-        //        Name = "Mahesh Chand",
-        //        BookTitle = "Graphics Programming with GDI+",
-        //        DOB = new DateTime(1975, 2, 23),
-        //        IsMVP = false
-        //    });
 
-        //    authors.Add(new Author()
-        //    {
-        //        ID = 201,
-        //        Name = "Mike Gold",
-        //        BookTitle = "Programming C#",
-        //        DOB = new DateTime(1982, 4, 12),
-        //        IsMVP = true
-        //    });
-
-        //    authors.Add(new Author()
-        //    {
-        //        ID = 244,
-        //        Name = "Mathew Cochran",
-        //        BookTitle = "LINQ in Vista",
-        //        DOB = new DateTime(1985, 9, 11),
-        //        IsMVP = true
-        //    });
-
-        //    return authors;
-        //}
-
-        //private void WindowsInitialized(object sender, EventArgs e)
-        //{
-        //    McDataGrid.ItemsSource = LoadCollectionData();
-        //}
-
-        //}
+        private ClassePasserelle passerelle;
 
         public AddTournament()
         {
             InitializeComponent();
+            this.passerelle = passerelle;
+
+            string[] tableTest = new string[] { "Toi", "Moi", "Nous" };
+            this.ListeKart.ItemsSource = tableTest;
+
+            Joueur Moi = new Joueur("", "-", "-");
+            Joueur Moi2 = new Joueur("", "-", "-");
+            Joueur Moi3 = new Joueur("", "-", "-");
+            Joueur Moi4 = new Joueur("", "-", "-");
+            Joueur Moi5 = new Joueur("", "-", "-");
+            Joueur Moi6 = new Joueur("", "-", "-");
+            Joueur Moi7 = new Joueur("", "-", "-");
+            Joueur Moi8 = new Joueur("", "-", "-");
+
+            Joueur[] JoueurTable = new Joueur[8] { Moi, Moi2, Moi3, Moi4, Moi5, Moi6, Moi7, Moi8 };
+
+            //for (int i = 0; i < 8; i++)
+            //{
+            //    JoueurTable[i] = new Joueur(string.Empty, "-", "-");
+            //}
+
+            this.MonDataGrid.ItemsSource = JoueurTable;
         }
 
 
