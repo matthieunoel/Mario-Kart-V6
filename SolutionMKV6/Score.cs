@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SolutionMKV6
 {
-    class Score
+    public class Score
     {
         private int numCourse;
         private int valeur;

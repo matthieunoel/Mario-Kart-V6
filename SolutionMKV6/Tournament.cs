@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SolutionMKV6
 {
-    class Tournament
+    public class Tournament
     {
 
         private string nom;

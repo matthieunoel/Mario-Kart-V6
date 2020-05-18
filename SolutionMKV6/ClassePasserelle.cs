@@ -150,59 +150,6 @@ namespace SolutionMKV6
         public List<Tournament> GetAllTournaments()
         {
 
-            //using (var connection = new SqliteConnection("Data Source=database.db"))
-            //{
-            //    connection.Open();
-
-
-            //    var command = connection.CreateCommand();
-            //    command.CommandText =
-            //    @"SELECT * FROM score";
-            //    command.Parameters.AddWithValue("$id", 1);
-
-            //    using (var reader = command.ExecuteReader())
-            //    {
-            //        while (reader.Read())
-            //        {
-            //            var name = reader.GetString(0);
-
-            //            Console.WriteLine($"Hello, {name}!");
-            //        }
-            //    }
-
-
-            //    command = connection.CreateCommand();
-            //    command.CommandText =
-            //    @"SELECT * FROM joueur";
-            //    command.Parameters.AddWithValue("$id", 1);
-
-            //    using (var reader = command.ExecuteReader())
-            //    {
-            //        while (reader.Read())
-            //        {
-            //            var name = reader.GetString(0);
-
-            //            Console.WriteLine($"Hello, {name}!");
-            //        }
-            //    }
-
-
-            //command = connection.CreateCommand();
-            //command.CommandText =
-            //@"SELECT * FROM touranment";
-            //command.Parameters.AddWithValue("$id", 1);
-
-            //using (var reader = command.ExecuteReader())
-            //{
-            //    while (reader.Read())
-            //    {
-            //        var name = reader.GetString(0);
-
-            //        Console.WriteLine($"Hello, {name}!");
-            //    }
-            //}
-            //}
-
             List<Tournament> ListeTournament = new List<Tournament>();
 
             using (var connection = new SqliteConnection("Data Source=data.db"))
