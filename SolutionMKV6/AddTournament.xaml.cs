@@ -19,7 +19,6 @@ namespace SolutionMKV6
     /// </summary>
     public partial class AddTournament : Window
     {
-
         private ClassePasserelle passerelle;
 
         public AddTournament(ClassePasserelle passerelle)
@@ -50,34 +49,69 @@ namespace SolutionMKV6
             //}
 
             this.MonDataGrid.ItemsSource = JoueurTable;
+
+            for (int i = 0; i < 8; i++)
+            {
+                //JoueurTable[i].SelectedItem = a;
+            }
+
+
         }
 
         private void Button_Ajouter1(object sender, RoutedEventArgs e)
         {
-            passerelle.AddTournament(new Tournament("tournoitest", "modejeu", "vitesse", false, true,
-                    new Joueur[8] {
-                        new Joueur("pseudo", "perso", "kart"),
-                        new Joueur("pseudo", "perso", "kart"),
-                        new Joueur("pseudo", "perso", "kart"),
-                        new Joueur("pseudo", "perso", "kart"),
-                        new Joueur("pseudo", "perso", "kart"),
-                        new Joueur("pseudo", "perso", "kart"),
-                        new Joueur("pseudo", "perso", "kart"),
-                       new Joueur("pseudo", "perso", "kart")
-                    }
-                ));
+            bool parEquipe;
+            bool avecIA;
+            if (ParEquipeCheck.IsChecked.Value == true)
+            {
+                parEquipe = true;
+            }
+            else
+            {
+                parEquipe = false;
+            }
+
+            if (AvecIACheck.IsChecked.Value == true)
+            {
+                avecIA = true;
+            }
+            else
+            {
+                avecIA = false;
+            }
+
+            if (ListeVitesse.SelectedItem == null)
+            {
+                MessageBox.Show("Attention vous n'avez pas rentree toutes les donnees necessaires.", "Vitesse non Renseignée", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+            if (ListeModeJeu.SelectedItem == null)
+            {
+                MessageBox.Show("Attention vous n'avez pas rentree toutes les donnees necessaires.", "Mode de jeu non renseigné", MessageBoxButton .OK, MessageBoxImage .Warning);
+            }
+
+            Joueur[] TableJoueurs = this.MonDataGrid.ItemsSource.Cast<Joueur>().ToArray();
+
+            passerelle.AddTournament(new Tournament(Nom_du_tournoi.Text, ListeModeJeu.SelectedItem.ToString(), ListeVitesse.SelectedItem.ToString(), avecIA, parEquipe, TableJoueurs));
 
         }
 
-        //private void Button_Retour(object sender, RoutedEventArgs e)
-        //{
-        //    MainWindow main = new MainWindow();
-        //    this.Content = main.Content;
-        //}
+
+
+        private void Button_Retour(object sender, RoutedEventArgs e)
+        {
+            this.Content = Content;
+        }
+
 
 
         //Pas 2 meme perso sinon message box "attention"
         //Verifier les caractères interdit dans le nommage du jeu pour pas d'erreur avec requete sql
+
+
+
+
+
     }
 
 }
