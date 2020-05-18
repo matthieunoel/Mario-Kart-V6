@@ -9,7 +9,7 @@
     <Grid>
         <Button Click="BtnClickAddTournament" Content="Creer un tournoi" HorizontalAlignment="Left" Margin="564,121,0,0" VerticalAlignment="Top" Width="115"/>
         <Button Click="BtnClickSeeTournament" Content="Voir un tournoi" HorizontalAlignment="Left" Margin="564,181,0,0" VerticalAlignment="Top" Width="115"/>
-
-
+        <Button Content="TOURNOIS" HorizontalAlignment="Left" Margin="242,26,0,0" VerticalAlignment="Top" Width="180" Height="40"/>
+        <DataGrid x:Name="mainDataGrid" HorizontalAlignment="Left" Height="268" Margin="139,88,0,0" VerticalAlignment="Top" Width="383"/>
     </Grid>
 </Window>
