@@ -54,36 +54,34 @@ namespace SolutionMKV6
 
         private void Button_Export(object sender, RoutedEventArgs e)
         {
-            private List<string> ConvertDataToStringList()
-            {
+            //private List<string> ConvertDataToStringList()
+            //{
+
+            //    #region Guard clauses...
 
 
 
-                #region Guard clauses...
+            //    if (this._ListeData.Count < 1)
+            //    {
+            //        throw new Exception("_ListeData est vide");
+            //    }
 
 
 
-                if (this._ListeData.Count < 1)
-                {
-                    throw new Exception("_ListeData est vide");
-                }
+            //    #endregion
+            //    // On ajoute le première ligne, 
+            //    List<string> DataText = new List<string>
+            //{
+            //    "id; nom; date; modeJeu; vitesse; avecIA; avecEquipe;"
+            //};
 
 
 
-                #endregion
-                // On ajoute le première ligne, 
-                List<string> DataText = new List<string>
-            {
-                "id; nom; date; modeJeu; vitesse; avecIA; avecEquipe;"
-            };
-
-
-
-                // On ajoute toutes les suivantes selon les données
-                foreach (var data in this._ListeData)
-                {
-                    DataText.Add($"{data.id}; {data.nom}; {data.date}; {data.modeJeu}; {data.vitesse}; {data.avecIA}; {data.Equipe}");
-                }
+            //    // On ajoute toutes les suivantes selon les données
+            //    foreach (var data in this._ListeData)
+            //    {
+            //        DataText.Add($"{data.id}; {data.nom}; {data.date}; {data.modeJeu}; {data.vitesse}; {data.avecIA}; {data.Equipe}");
+            //    }
 
 
 
