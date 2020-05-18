@@ -135,36 +135,6 @@ namespace SolutionMKV6
         /// 
         /// </summary>
         /// <returns></returns>
-        //bool SendTournamentInfoToBase()
-        //{
-
-        //    //using (var connection = new SqliteConnection("Data Source=hello.db"))
-        //    //{
-        //    //    connection.Open();
-
-        //    //    var command = connection.CreateCommand();
-        //    //    command.CommandText =
-        //    //    @"SELECT nameFROM userWHERE id = $id";
-        //    //    command.Parameters.AddWithValue("$id", 1);
-
-        //    //    using (var reader = command.ExecuteReader())
-        //    //    {
-        //    //        while (reader.Read())
-        //    //        {
-        //    //            var name = reader.GetString(0);
-
-        //    //            Console.WriteLine($"Hello, {name}!");
-        //    //        }
-        //    //    }
-        //    //}
-
-        //    return false;
-        //}
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         public List<Tournament> GetAllTournaments()
         {
 
@@ -270,42 +240,6 @@ namespace SolutionMKV6
         {
 
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="TournamentId"></param>
-        /// <returns></returns>
-        //Tournament GetTournamentInfo(int TournamentId)
-        //{
-        //    return new Tournament();
-        //}
-
-        //List<Joueur> GetAllJoueurs()
-        //{
-
-        //    using (var connection = new SqliteConnection("Data Source=hello.db"))
-        //    {
-        //        connection.Open();
-
-        //        var command = connection.CreateCommand();
-        //        command.CommandText =
-        //        @"SELECT id, nom, perso, kart FROM joueur";
-        //        command.Parameters.AddWithValue("$id", 1);
-
-        //        using (var reader = command.ExecuteReader())
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                var name = reader.GetString(0);
-
-        //                Console.WriteLine($"Hello, {name}!");
-        //            }
-        //        }
-        //    }
-
-        //    return new List<Joueur>();
-        //}
     }
 
 }
