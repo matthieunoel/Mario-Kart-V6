@@ -30,8 +30,8 @@ namespace SolutionMKV6
             
             this.ListeKart.ItemsSource = passerelle.ListeKarts;
             this.ListePerso.ItemsSource = passerelle.ListePersonnages;
-            //this.ListeModeJeu.ItemsSource = passerelle.
-            //this.ListeVitesse.ItemsSource = passerelle.
+            this.ListeModeJeu.ItemsSource = passerelle.ModesJeu;
+            this.ListeVitesse.ItemsSource = passerelle.Vitesses;
 
             Joueur Moi = new Joueur();
             Joueur Moi2 = new Joueur();
@@ -52,24 +52,32 @@ namespace SolutionMKV6
             this.MonDataGrid.ItemsSource = JoueurTable;
         }
 
-        //private void Button_Ajouter1(object sender, TextChangedEventArgs e)
-        //{
-        //    //passerelle.AddTournament(new Tournament("TournoiTest", "ModeJeu", "Vitesse", false, true,
-        //    //        new Joueur[8] {
-        //    //            new Joueur("Pseudo", "Perso", "Kart"),
-        //    //            new Joueur("Pseudo", "Perso", "Kart"),
-        //    //            new Joueur("Pseudo", "Perso", "Kart"),
-        //    //            new Joueur("Pseudo", "Perso", "Kart"),
-        //    //            new Joueur("Pseudo", "Perso", "Kart"),
-        //    //            new Joueur("Pseudo", "Perso", "Kart"),
-        //    //            new Joueur("Pseudo", "Perso", "Kart"),
-        //    //           new Joueur("Pseudo", "Perso", "Kart")
-        //    //        }
-        //    //    ));
+        private void Button_Ajouter1(object sender, RoutedEventArgs e)
+        {
+            passerelle.AddTournament(new Tournament("tournoitest", "modejeu", "vitesse", false, true,
+                    new Joueur[8] {
+                        new Joueur("pseudo", "perso", "kart"),
+                        new Joueur("pseudo", "perso", "kart"),
+                        new Joueur("pseudo", "perso", "kart"),
+                        new Joueur("pseudo", "perso", "kart"),
+                        new Joueur("pseudo", "perso", "kart"),
+                        new Joueur("pseudo", "perso", "kart"),
+                        new Joueur("pseudo", "perso", "kart"),
+                       new Joueur("pseudo", "perso", "kart")
+                    }
+                ));
 
+        }
+
+        //private void Button_Retour(object sender, RoutedEventArgs e)
+        //{
+        //    MainWindow main = new MainWindow();
+        //    this.Content = main.Content;
         //}
 
 
+        //Pas 2 meme perso sinon message box "attention"
+        //Verifier les caractères interdit dans le nommage du jeu pour pas d'erreur avec requete sql
     }
 
 }
