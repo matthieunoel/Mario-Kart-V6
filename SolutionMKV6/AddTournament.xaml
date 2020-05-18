@@ -28,9 +28,10 @@
         <Label Content="Par Equipe :" HorizontalAlignment="Left" Margin="438,117.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <CheckBox HorizontalAlignment="Left" Margin="515,124.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <CheckBox HorizontalAlignment="Left" Margin="515,54.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <!--<Button Content="Ajouter" HorizontalAlignment="Left" Margin="660,172,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" Height="42" Click="Button_Ajouter1" />-->
-        <ComboBox x:Name="ListeVitesse" HorizontalAlignment="Left" Margin="509,176,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Confirmer" HorizontalAlignment="Left" Margin="570,172,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" Height="42" Click="Button_Ajouter1" />
+        <ComboBox x:Name="ListeVitesse" HorizontalAlignment="Left" Margin="509,176,0,0" VerticalAlignment="Top" Width="120" Height="26" Grid.RowSpan="2"/>
         <ComboBox x:Name="ListeModeJeu" HorizontalAlignment="Left" Margin="509,108,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Retour" HorizontalAlignment="Left" Margin="358,172,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" Height="42"  />
 
     </Grid>
 </Window>
