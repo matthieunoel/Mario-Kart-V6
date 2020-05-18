@@ -5,12 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SolutionMKV6"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="480" Width="780.5">
     <Grid>
         <Button Click="BtnClickAddTournament" Content="Creer un tournoi" HorizontalAlignment="Left" Margin="564,121,0,0" VerticalAlignment="Top" Width="115"/>
         <Button Click="BtnClickSeeTournament" Content="Voir un tournoi" HorizontalAlignment="Left" Margin="564,181,0,0" VerticalAlignment="Top" Width="115"/>
-        <DataGrid x:Name="mainDataGrid" HorizontalAlignment="Left" Height="268" Margin="139,88,0,0" VerticalAlignment="Top" Width="383"/>
+        <DataGrid x:Name="mainDataGrid" HorizontalAlignment="Left" Height="268" Margin="139,88,0,0" VerticalAlignment="Top" Width="383" IsReadOnly="True"/>
         <Label Content="Tournois" HorizontalAlignment="Left" Margin="291,26,0,0" VerticalAlignment="Top" Width="99" FontSize="20" FontFamily="Segoe UI Black"/>
-        <Grid HorizontalAlignment="Left" Height="100" Margin="1031,300,-339,0" VerticalAlignment="Top" Width="100" Initialized="Initialized"/>
     </Grid>
 </Window>
