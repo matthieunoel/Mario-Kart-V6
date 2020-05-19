@@ -7,7 +7,6 @@ namespace SolutionMKV6
 {
     public class ClassePasserelle
     {
-        //private const string DbString = "va-11 hall-a";
         private string filePath = "data.db";
 
         private string[] listePersonnages;
@@ -24,35 +23,37 @@ namespace SolutionMKV6
 
         public ClassePasserelle()
         {
-            using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
+            try
             {
-                connection.Open();
+                using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
+                {
+                    connection.Open();
 
-                var command = connection.CreateCommand();
-                command.CommandText =
-                "CREATE TABLE IF NOT EXISTS tournament('id' INTEGER PRIMARY KEY AUTOINCREMENT , 'nom' TEXT, 'date' DATETIME, 'modeJeu' TEXT, 'vitesse' TEXT, 'avecIA' BOOLEAN, 'avecEquipe' BOOLEAN)";
-                command.ExecuteNonQuery();
+                    var command = connection.CreateCommand();
+                    command.CommandText =
+                    "CREATE TABLE IF NOT EXISTS tournament('id' INTEGER PRIMARY KEY AUTOINCREMENT , 'nom' TEXT, 'date' DATETIME, 'modeJeu' TEXT, 'vitesse' TEXT, 'avecIA' BOOLEAN, 'avecEquipe' BOOLEAN)";
+                    command.ExecuteNonQuery();
 
-                command = connection.CreateCommand();
-                command.CommandText =
-                "CREATE TABLE IF NOT EXISTS joueur('id' INTEGER PRIMARY KEY AUTOINCREMENT , 'tournamentId' int, 'nom' TEXT, 'personnage' TEXT, 'kart' TEXT)";
-                command.ExecuteNonQuery();
+                    command = connection.CreateCommand();
+                    command.CommandText =
+                    "CREATE TABLE IF NOT EXISTS joueur('id' INTEGER PRIMARY KEY AUTOINCREMENT , 'tournamentId' int, 'nom' TEXT, 'personnage' TEXT, 'kart' TEXT)";
+                    command.ExecuteNonQuery();
 
-                command = connection.CreateCommand();
-                command.CommandText =
-                "CREATE TABLE IF NOT EXISTS score('id' INTEGER PRIMARY KEY AUTOINCREMENT , 'joueurId' int, 'numCourse' int, 'valeur' int)";
-                command.ExecuteNonQuery();
+                    command = connection.CreateCommand();
+                    command.CommandText =
+                    "CREATE TABLE IF NOT EXISTS score('id' INTEGER PRIMARY KEY AUTOINCREMENT , 'joueurId' int, 'numCourse' int, 'valeur' int)";
+                    command.ExecuteNonQuery();
 
-                //command = connection.CreateCommand();
-                //command.CommandText =
-                //"INSERT INTO tournament (nom, date, modeJeu, vitesse, avecIA, avecEquipe) VALUES ('TournoiTest', datetime('now', 'localtime'), 'ModeJeuTest', '12.798Cc', false, false)";
-                //command.ExecuteNonQuery();
+                    //command = connection.CreateCommand();
+                    //command.CommandText =
+                    //"INSERT INTO tournament (nom, date, modeJeu, vitesse, avecIA, avecEquipe) VALUES ('TournoiTest', datetime('now', 'localtime'), 'ModeJeuTest', '12.798Cc', false, false)";
+                    //command.ExecuteNonQuery();
 
-                connection.Close();
+                    connection.Close();
 
-            }
+                }
 
-            this.listePersonnages = new string[25] {
+                this.ListePersonnages = new string[25] {
                    "Baby Mario",
                     "Baby Peach",
                     "Bowser",
@@ -80,7 +81,7 @@ namespace SolutionMKV6
                     "Toadette"
                 };
 
-            this.listeKarts = new string[31] {
+                this.ListeKarts = new string[31] {
                     "Standard Kart S",
                     "Booster Seat",
                     "Mini Beast",
@@ -114,108 +115,111 @@ namespace SolutionMKV6
                     "Phantom"
                 };
 
-            this.vitesses = new string[4]
-            {
+                this.Vitesses = new string[4]
+                {
                 "50Cc",
                 "100Cc",
                 "150Cc",
                 "Miroir"
-            };
+                };
 
-            this.modesJeu = new string[4]
-            {
+                this.ModesJeu = new string[4]
+                {
                 "Grand Prix",
                 "Contre-la-montre",
                 "Course VS",
                 "Bataille"
-            };
+                };
+                
+                #region Specs
+
+                Random rnd = new Random();
+
+                if (rnd.Next(0, 100) + 1 == 11)
+                {
+                    MessageBox.Show("Avant de commencer, le groupe vous invite a faire des recherche sur le va-11 hall-a.",
+                                   "DEBUG",
+                                   MessageBoxButton.OK,
+                                   MessageBoxImage.Information);
+                }
+
+                #endregion
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur est intervenue lors de l'initialisation : {ex.Message}",
+                                   "Erreur d'initialisation",
+                                   MessageBoxButton.OK,
+                                   MessageBoxImage.Error);
+
+                Application.Current.Shutdown();
+            }
         }
 
         /// <summary>
-        /// 
+        /// Permet de récupérer tout les tournois de la base, leurs joueurs des tournois, ainsi que les scores des joueurs.
         /// </summary>
-        /// <returns></returns>
-        //bool SendTournamentInfoToBase()
-        //{
-
-        //    //using (var connection = new SqliteConnection("Data Source=hello.db"))
-        //    //{
-        //    //    connection.Open();
-
-        //    //    var command = connection.CreateCommand();
-        //    //    command.CommandText =
-        //    //    @"SELECT nameFROM userWHERE id = $id";
-        //    //    command.Parameters.AddWithValue("$id", 1);
-
-        //    //    using (var reader = command.ExecuteReader())
-        //    //    {
-        //    //        while (reader.Read())
-        //    //        {
-        //    //            var name = reader.GetString(0);
-
-        //    //            Console.WriteLine($"Hello, {name}!");
-        //    //        }
-        //    //    }
-        //    //}
-
-        //    return false;
-        //}
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+        /// <returns>Une liste des tournois de la base</returns>
         public List<Tournament> GetAllTournaments()
         {
 
             List<Tournament> ListeTournament = new List<Tournament>();
 
-            using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
+            try
             {
-                connection.Open();
-
-                var command = connection.CreateCommand();
-                command.CommandText =
-                "SELECT id, nom, date, modeJeu, vitesse, avecIA, avecEquipe FROM tournament";
-                using (var reader = command.ExecuteReader())
+                using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
                 {
-                    while (reader.Read())
+                    connection.Open();
+
+                    var command = connection.CreateCommand();
+                    command.CommandText =
+                    "SELECT id, nom, date, modeJeu, vitesse, avecIA, avecEquipe FROM tournament";
+                    using (var reader = command.ExecuteReader())
                     {
-
-                        Joueur[] TabJoueurs = new Joueur[8];
-                        int i = 0;
-                        command = connection.CreateCommand();
-                        command.CommandText =
-                            $"SELECT id, nom, personnage, kart FROM joueur WHERE tournamentId={reader.GetInt64(0)}";
-                        using (var readerJoueur = command.ExecuteReader())
+                        while (reader.Read())
                         {
-                            while (readerJoueur.Read())
+
+                            Joueur[] TabJoueurs = new Joueur[8];
+                            int i = 0;
+                            command = connection.CreateCommand();
+                            command.CommandText =
+                                $"SELECT id, nom, personnage, kart FROM joueur WHERE tournamentId={reader.GetInt64(0)}";
+                            using (var readerJoueur = command.ExecuteReader())
                             {
-
-                                List<Score> scores = new List<Score>();
-
-                                command = connection.CreateCommand();
-                                command.CommandText =
-                                    $"SELECT numCourse, valeur FROM score WHERE joueurId={readerJoueur.GetInt64(0)}";
-                                using (var readerScore = command.ExecuteReader())
+                                while (readerJoueur.Read())
                                 {
-                                    while (readerScore.Read())
+
+                                    List<Score> scores = new List<Score>();
+
+                                    command = connection.CreateCommand();
+                                    command.CommandText =
+                                        $"SELECT numCourse, valeur FROM score WHERE joueurId={readerJoueur.GetInt64(0)}";
+                                    using (var readerScore = command.ExecuteReader())
                                     {
-                                        scores.Add( new Score((int)readerScore.GetInt64(0), (int)readerScore.GetInt64(1)) );
+                                        while (readerScore.Read())
+                                        {
+                                            scores.Add(new Score((int)readerScore.GetInt64(0), (int)readerScore.GetInt64(1)));
+                                        }
                                     }
+
+                                    TabJoueurs[i] = new Joueur(readerJoueur.GetString(1), readerJoueur.GetString(2), readerJoueur.GetString(3));
+                                    i++;
                                 }
-
-                                TabJoueurs[i] = new Joueur(readerJoueur.GetString(1), readerJoueur.GetString(2), readerJoueur.GetString(3));
-                                i++;
                             }
+
+                            ListeTournament.Add(new Tournament(reader.GetString(1), reader.GetDateTime(2), reader.GetString(3), reader.GetString(4), reader.GetBoolean(5), reader.GetBoolean(6), TabJoueurs));
                         }
-
-                        ListeTournament.Add(new Tournament(reader.GetString(1), reader.GetDateTime(2), reader.GetString(3), reader.GetString(4), reader.GetBoolean(5), reader.GetBoolean(6), TabJoueurs));
                     }
+
+                    connection.Close();
+
                 }
-
-                connection.Close();
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Un erreur est apparue lors de la récupération des donées : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                throw ex;
             }
 
             return ListeTournament;
@@ -231,6 +235,10 @@ namespace SolutionMKV6
             //return ListeTest;
         }
 
+        /// <summary>
+        /// Permet d'ajouter un tournois en base, ainsi que ces joueurs (Attention ! Les scores des joueurs ne sont pas pris en compte !).
+        /// </summary>
+        /// <param name="tournament">Le tournois à ajouter en base</param>
         public void AddTournament(Tournament tournament)
         {
             using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
@@ -261,14 +269,55 @@ namespace SolutionMKV6
             }
         }
 
-        public void addScoreToJoueur()
+        /// <summary>
+        /// Permet d'ajouter un score à un joueur
+        /// </summary>
+        /// <param name="joueur">Le joueur concerné par le score</param>
+        /// <param name="score">Le score à ajouter au joueur</param>
+        /// <returns>L'id du score ajouté. A implémenter au score (style "score.Id = passerelle.addScoreToJoueur(joueurn score)" )</returns>
+        public int addScoreToJoueur(Joueur joueur, Score score)
         {
+            try
+            {
+                #region Guard clauses
 
-        }
+                if (!(joueur.Id >= 0))
+                {
+                    throw new Exception($"joueur.Id isn't valid ({joueur.Id.ToString()})");
+                }
 
-        public void editScore()
-        {
+                #endregion
 
+                int scoreId = 0;
+
+
+                using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
+                {
+                    connection.Open();
+
+                    var command = connection.CreateCommand();
+                    command.CommandText =
+                    $"INSERT INTO score (joueurId, numCourse, valeur) VALUES ({joueur.Id}, {score.NumCourse}, {score.Valeur})";
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = "select last_insert_rowid()";
+
+                    scoreId = (int)(Int64)command.ExecuteScalar();
+
+                    connection.Close();
+
+                }
+
+                return scoreId;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur est apparue : {ex.Message}",
+                                   "Erreur",
+                                   MessageBoxButton.OK,
+                                   MessageBoxImage.Error);
+                throw;
+            }
         }
 
         //public void HeyJoeuur(Joueur joueur)
@@ -289,40 +338,45 @@ namespace SolutionMKV6
 
 
         /// <summary>
-        /// 
+        /// Permet d'éditer le score d'un joueur à partir de l'ID du score.
         /// </summary>
-        /// <param name="TournamentId"></param>
-        /// <returns></returns>
-        //Tournament GetTournamentInfo(int TournamentId)
-        //{
-        //    return new Tournament();
-        //}
+        /// <param name="score">Le score à modifier</param>
+        public void editScore(Score score)
+        {
 
-        //List<Joueur> GetAllJoueurs()
-        //{
+            try
+            {
+                #region Guard clauses
 
-        //    using (var connection = new SqliteConnection("Data Source=hello.db"))
-        //    {
-        //        connection.Open();
+                if (!(score.Id >= 0))
+                {
+                    throw new Exception($"score.Id isn't valid ({score.Id.ToString()})");
+                }
 
-        //        var command = connection.CreateCommand();
-        //        command.CommandText =
-        //        @"SELECT id, nom, perso, kart FROM joueur";
-        //        command.Parameters.AddWithValue("$id", 1);
+                #endregion
 
-        //        using (var reader = command.ExecuteReader())
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                var name = reader.GetString(0);
+                using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
+                {
+                    connection.Open();
 
-        //                Console.WriteLine($"Hello, {name}!");
-        //            }
-        //        }
-        //    }
+                    var command = connection.CreateCommand();
+                    command.CommandText =
+                    $"UPDATE score SET numCourse={score.NumCourse}, valeur={score.Valeur} WHERE id={score.Id}";
+                    command.ExecuteNonQuery();
 
-        //    return new List<Joueur>();
-        //}
+                    connection.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur est apparue : {ex.Message}",
+                                   "Erreur",
+                                   MessageBoxButton.OK,
+                                   MessageBoxImage.Error);
+                throw;
+            }
+        }
     }
 
 }

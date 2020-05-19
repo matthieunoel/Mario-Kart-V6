@@ -12,7 +12,7 @@
             <RowDefinition Height="7*"/>
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
-        <DataGrid Name="MonDataGrid" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="320" Background="White" AutoGenerateColumns="False" BorderThickness="0" Grid.RowSpan="2" RowHeight="42">
+        <DataGrid Name="MonDataGrid" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="320" Background="White" AutoGenerateColumns="False" SelectionUnit="Cell" BorderThickness="0" Grid.RowSpan="2" RowHeight="42">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Pseudo" Width="106" Binding="{Binding Nom}"/>
                 <DataGridComboBoxColumn Header="Personnage" Width="106" x:Name="ListePerso" SelectedItemBinding="{Binding Personnage}" />
@@ -22,16 +22,16 @@
         <Label Content="Mode de jeu :" HorizontalAlignment="Left" Margin="426,106,0,0" VerticalAlignment="Top"/>
         <Label Content="   " HorizontalAlignment="Left" Margin="384,17,0,0" VerticalAlignment="Top"/>
         <Label Content="Nom du Tournoi :" HorizontalAlignment="Left" Margin="358,5,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Name="Nom_du_tournoi" Text="" Height="23" Margin="460,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Nom_du_tournoi" Text="" Height="23" Margin="460,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Vitesse :" HorizontalAlignment="Left" Margin="456,176,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
         <Label Content="Avec IA :" HorizontalAlignment="Left" Margin="456,48.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <Label Content="Par Equipe :" HorizontalAlignment="Left" Margin="438,117.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <CheckBox HorizontalAlignment="Left" Margin="515,124.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <CheckBox HorizontalAlignment="Left" Margin="515,54.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <CheckBox x:Name="ParEquipeCheck" HorizontalAlignment="Left" Margin="515,124.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <CheckBox Name="AvecIACheck" HorizontalAlignment="Left" Margin="515,54.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <Button Content="Confirmer" HorizontalAlignment="Left" Margin="570,172,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" Height="42" Click="Button_Ajouter1" />
-        <ComboBox x:Name="ListeVitesse" HorizontalAlignment="Left" Margin="509,176,0,0" VerticalAlignment="Top" Width="120" Height="26" Grid.RowSpan="2"/>
-        <ComboBox x:Name="ListeModeJeu" HorizontalAlignment="Left" Margin="509,108,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Retour" HorizontalAlignment="Left" Margin="358,172,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" Height="42"  />
+        <ComboBox x:Name="ListeVitesse" SelectedItem="" HorizontalAlignment="Left" Margin="509,176,0,0" VerticalAlignment="Top" Width="120" Height="26" Grid.RowSpan="2"/>
+        <ComboBox x:Name="ListeModeJeu" SelectedItem=""  HorizontalAlignment="Left" Margin="509,108,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Retour" HorizontalAlignment="Left" Margin="358,172,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" Height="42" Click="Button_Retour" />
 
     </Grid>
 </Window>

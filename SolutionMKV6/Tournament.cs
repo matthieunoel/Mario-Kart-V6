@@ -9,6 +9,7 @@ namespace SolutionMKV6
     public class Tournament
     {
 
+        private int id;
         private string nom;
         private DateTime date;
         private string modeJeu;
@@ -17,6 +18,7 @@ namespace SolutionMKV6
         private bool enEquipe;
         private Joueur[] joueurs;
 
+        public int Id { get => id; set => id = value; }
         public string Nom { get => nom; set => nom = value; }
         public DateTime Date { get => date; set => date = value; }
         public string ModeJeu { get => modeJeu; set => modeJeu = value; }
@@ -48,6 +50,18 @@ namespace SolutionMKV6
 
         public Tournament(string nom, DateTime date, string modeJeu, string vitesse, bool avecIA, bool enEquipe, Joueur[] joueurs)
         {
+            this.Nom = nom;
+            this.Date = date;
+            this.ModeJeu = modeJeu;
+            this.Vitesse = vitesse;
+            this.AvecIA = avecIA;
+            this.EnEquipe = enEquipe;
+            this.Joueurs = joueurs;
+        }
+
+        public Tournament(int id, string nom, DateTime date, string modeJeu, string vitesse, bool avecIA, bool enEquipe, Joueur[] joueurs)
+        {
+            this.Id = id;
             this.Nom = nom;
             this.Date = date;
             this.ModeJeu = modeJeu;
