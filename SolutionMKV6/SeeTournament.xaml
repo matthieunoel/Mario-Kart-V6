@@ -7,12 +7,15 @@
         mc:Ignorable="d"
         Title="SeeTournament" Height="450" Width="800">
     <Grid Focusable="True">
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="350,10,0,0" TextWrapping="Wrap" Text="See Tournaments" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" TextAlignment="Center"/>
-        <DataGrid HorizontalAlignment="Left" Height="280" Margin="80,60,0,0" VerticalAlignment="Top" Width="320" SelectionChanged="DataGrid_SelectionChanged"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\User\Downloads\284069_original.jpg"></ImageBrush>
+        </Grid.Background>
+        <DataGrid x:Name="Grid1" HorizontalAlignment="Left" Height="280" Margin="36,60,0,0" VerticalAlignment="Top" Width="320" SelectionChanged="DataGrid_SelectionChanged"/>
         <Button Content="Add" HorizontalAlignment="Left" Margin="500,60,0,0" VerticalAlignment="Top" Width="180" Height="40" Click="Button_Add"/>
         <Button Content="Edit" HorizontalAlignment="Left" Margin="500,140,0,0" VerticalAlignment="Top" Width="180"  Height="40" Click="Button_Edit"/>
         <Button Content="Refresh" HorizontalAlignment="Left" Margin="500,220,0,0" VerticalAlignment="Top" Width="180" Height="40" Click="Button_Refresh"/>
         <Button Content="Export" HorizontalAlignment="Left" Margin="500,300,0,0" VerticalAlignment="Top" Width="180" Height="40" Click="Button_Export"/>
+        <Label Content="Modifer les tournois" HorizontalAlignment="Left" Margin="36,10,0,0" VerticalAlignment="Top" Width="157" TextOptions.TextHintingMode="Animated" FontSize="16" Height="30"/>
 
     </Grid>
 </Window>

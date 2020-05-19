@@ -271,6 +271,23 @@ namespace SolutionMKV6
 
         }
 
+        //public void HeyJoeuur(Joueur joueur)
+        //{
+        //    using (SqliteConnection connection = new SqliteConnection($"Data Source={this.filePath}"))
+        //    {
+        //        connection.Open();
+
+        //        var command = connection.CreateCommand();
+        //        command.CommandText =
+        //        $"select * from joueur ";
+        //        command.ExecuteNonQuery();
+
+        //        connection.Close();
+        //    }
+
+        //}
+
+
         /// <summary>
         /// 
         /// </summary>

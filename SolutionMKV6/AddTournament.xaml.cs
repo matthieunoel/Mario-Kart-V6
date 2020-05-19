@@ -63,7 +63,7 @@ namespace SolutionMKV6
                         new Joueur("pseudo", "perso", "kart"),
                         new Joueur("pseudo", "perso", "kart"),
                         new Joueur("pseudo", "perso", "kart"),
-                       new Joueur("pseudo", "perso", "kart")
+                        new Joueur("pseudo", "perso", "kart")
                     }
                 ));
 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace SolutionMKV6
 {
     /// <summary>
@@ -19,27 +20,33 @@ namespace SolutionMKV6
     /// </summary>
     public partial class SeeTournament : Window
     {
-        protected ClassePasserelle passerelle;
+        private ClassePasserelle passerelle;
+        //private List<Joueur> JoueursList;
+        
         public SeeTournament(ClassePasserelle passerelleParam)
         {
             InitializeComponent();
             this.passerelle = passerelleParam;
+            string[] tabx = new string[] { "joueur.Nom", "joueur.Personnage", "joueur.Kart", "tournament,no" };
+            this.Grid1.ItemsSource = tabx;
+            //this.JoueursList = passerelle.HeyJoeuur();
+            //this.Grid1.ItemsSource = JoueursList;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
+
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-            AddTournament add = new AddTournament(passerelle);
-            this.Content = add.Content; 
+           
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)
@@ -49,12 +56,12 @@ namespace SolutionMKV6
 
         private void Button_Refresh(object sender, RoutedEventArgs e)
         {
-
+           
         }
 
         private void Button_Export(object sender, RoutedEventArgs e)
         {
-            //private List<string> ConvertDataToStringList()
+            //public List<string> ConvertDataToStringList()
             //{
 
             //    #region Guard clauses...
@@ -82,8 +89,6 @@ namespace SolutionMKV6
             //    {
             //        DataText.Add($"{data.id}; {data.nom}; {data.date}; {data.modeJeu}; {data.vitesse}; {data.avecIA}; {data.Equipe}");
             //    }
-
-
 
 
             }
