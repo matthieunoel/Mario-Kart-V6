@@ -130,7 +130,7 @@ namespace SolutionMKV6
                 "Course VS",
                 "Bataille"
                 };
-                
+
                 #region Specs
 
                 Random rnd = new Random();
@@ -377,6 +377,58 @@ namespace SolutionMKV6
                 throw;
             }
         }
-    }
 
+        //public void AddJoeur(Joueur joueur)
+        //{
+        //    using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
+        //    {
+        //        connection.Open();
+
+        //        var command = connection.CreateCommand();
+        //        command.CommandText =
+        //        $"INSERT INTO joueur (nom, personnage, kart) VALUES ('{joueur.Nom}', '{joueur.Personnage}', '{joueur.Kart}');";
+
+        //        connection.Close();
+        //    }
+        //}
+
+        //public List<Joueur> JoueursListe()
+        //{
+        //    List<Joueur> Listejoueurs = new List<Joueur>();
+
+        //try
+        //    {
+        //        using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
+        //        {
+        //            connection.Open();
+
+        //            var command = connection.CreateCommand();
+        //            command.CommandText =
+        //            "SELECT * FROM joueur";
+        //            using (var reader = command.ExecuteReader())
+        //            {
+        //                while (readerJoueur.Read())
+        //                {
+        //                    List<Score> scores = new List<Score>();
+        //                    command = connection.CreateCommand();
+        //                    command.CommandText =
+        //                    $"SELECT numCourse, valeur FROM score WHERE joueurId={readerJoueur.GetInt64(0)}";
+        //                    using (var readerScore = command.ExecuteReader())
+        //                    {
+        //                        while (readerScore.Read())
+        //                        {
+        //                            scores.Add(new Score((int) readerScore.GetInt64(0), (int) readerScore.GetInt64(1)));
+        //                        }
+        //                    }
+                            
+        //                    TabJoueurs[i] = new Joueur(readerJoueur.GetString(1), readerJoueur.GetString(2), readerJoueur.GetString(3));
+        //                    i++;
+        //                }
+        //            }
+
+        //        }
+        //    }
+        //    connection.Close();
+        //}
+    }
 }

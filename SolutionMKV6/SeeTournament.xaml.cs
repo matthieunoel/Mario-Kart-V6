@@ -21,76 +21,71 @@ namespace SolutionMKV6
     public partial class SeeTournament : Window
     {
         private ClassePasserelle passerelle;
-        //private List<Joueur> JoueursList;
-        
+      
         public SeeTournament(ClassePasserelle passerelleParam)
         {
             InitializeComponent();
             this.passerelle = passerelleParam;
-            string[] tabx = new string[] { "joueur.Nom", "joueur.Personnage", "joueur.Kart", "tournament,no" };
-            this.Grid1.ItemsSource = tabx;
-            //this.JoueursList = passerelle.HeyJoeuur();
-            //this.Grid1.ItemsSource = JoueursList;
-        }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+            //string[] tabx = new string[] { "tournament.id", "tournament.nom", "tournament.joueur" };
+            //this.Grid1.ItemsSource = tabx;
+            //this.JoueursList = passerelle.HeyJoeuur();
             
+
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             
+
+
+            //AdventureWorksLT2008Entities advenWorksEntities = new AdventureWorksLT2008Entities();
+
+            //ObjectQuery<Customer> customers = advenWorksEntities.Customers;
+
+            //var query =
+            //from customer in customers
+            //orderby customer.CompanyName
+            //select new
+            //{
+            //    Tournament.Nom,
+            //    customer.FirstName,
+            //    customer.CompanyName,
+            //    customer.Title,
+            //    customer.EmailAddress,
+            //    customer.Phone,
+            //    customer.SalesPerson
+            //};
+
+            //Grid1.ItemsSource = query.ToList();
         }
 
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)
         {
-
+            //var id = Convert.ToInt32(DgEmp.Rows[e.RowIndex].Cells[2].Value.ToString());
+            //if (id != 0)
+            //{
+            //    // Delete query on basis of id
+            //    GridBind();
+            //    ClearData();
+            //}
         }
 
         private void Button_Refresh(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void Button_Export(object sender, RoutedEventArgs e)
         {
-            //public List<string> ConvertDataToStringList()
-            //{
 
-            //    #region Guard clauses...
-
-
-
-            //    if (this._ListeData.Count < 1)
-            //    {
-            //        throw new Exception("_ListeData est vide");
-            //    }
-
-
-
-            //    #endregion
-            //    // On ajoute le première ligne, 
-            //    List<string> DataText = new List<string>
-            //{
-            //    "id; nom; date; modeJeu; vitesse; avecIA; avecEquipe;"
-            //};
-
-
-
-            //    // On ajoute toutes les suivantes selon les données
-            //    foreach (var data in this._ListeData)
-            //    {
-            //        DataText.Add($"{data.id}; {data.nom}; {data.date}; {data.modeJeu}; {data.vitesse}; {data.avecIA}; {data.Equipe}");
-            //    }
-
-
-            }
         }
+    }
 }
