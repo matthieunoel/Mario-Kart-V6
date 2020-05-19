@@ -130,7 +130,7 @@ namespace SolutionMKV6
                 "Course VS",
                 "Bataille"
                 };
-                
+
                 #region Specs
 
                 Random rnd = new Random();
@@ -194,21 +194,21 @@ namespace SolutionMKV6
 
                                     command = connection.CreateCommand();
                                     command.CommandText =
-                                        $"SELECT numCourse, valeur FROM score WHERE joueurId={readerJoueur.GetInt64(0)}";
+                                        $"SELECT id, numCourse, valeur FROM score WHERE joueurId={readerJoueur.GetInt64(0)}";
                                     using (var readerScore = command.ExecuteReader())
                                     {
                                         while (readerScore.Read())
                                         {
-                                            scores.Add(new Score((int)readerScore.GetInt64(0), (int)readerScore.GetInt64(1)));
+                                            scores.Add(new Score((int)readerScore.GetInt64(0), (int)readerScore.GetInt64(1), (int)readerScore.GetInt64(2)));
                                         }
                                     }
 
-                                    TabJoueurs[i] = new Joueur(readerJoueur.GetString(1), readerJoueur.GetString(2), readerJoueur.GetString(3));
+                                    TabJoueurs[i] = new Joueur((int)readerJoueur.GetInt64(0), readerJoueur.GetString(1), readerJoueur.GetString(2), readerJoueur.GetString(3), scores);
                                     i++;
                                 }
                             }
 
-                            ListeTournament.Add(new Tournament(reader.GetString(1), reader.GetDateTime(2), reader.GetString(3), reader.GetString(4), reader.GetBoolean(5), reader.GetBoolean(6), TabJoueurs));
+                            ListeTournament.Add(new Tournament((int)reader.GetInt64(0), reader.GetString(1), reader.GetDateTime(2), reader.GetString(3), reader.GetString(4), reader.GetBoolean(5), reader.GetBoolean(6), TabJoueurs));
                         }
                     }
 
@@ -360,6 +360,58 @@ namespace SolutionMKV6
                 throw;
             }
         }
-    }
 
+        //public void AddJoeur(Joueur joueur)
+        //{
+        //    using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
+        //    {
+        //        connection.Open();
+
+        //        var command = connection.CreateCommand();
+        //        command.CommandText =
+        //        $"INSERT INTO joueur (nom, personnage, kart) VALUES ('{joueur.Nom}', '{joueur.Personnage}', '{joueur.Kart}');";
+
+        //        connection.Close();
+        //    }
+        //}
+
+        //public List<Joueur> JoueursListe()
+        //{
+        //    List<Joueur> Listejoueurs = new List<Joueur>();
+
+        //try
+        //    {
+        //        using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
+        //        {
+        //            connection.Open();
+
+        //            var command = connection.CreateCommand();
+        //            command.CommandText =
+        //            "SELECT * FROM joueur";
+        //            using (var reader = command.ExecuteReader())
+        //            {
+        //                while (readerJoueur.Read())
+        //                {
+        //                    List<Score> scores = new List<Score>();
+        //                    command = connection.CreateCommand();
+        //                    command.CommandText =
+        //                    $"SELECT numCourse, valeur FROM score WHERE joueurId={readerJoueur.GetInt64(0)}";
+        //                    using (var readerScore = command.ExecuteReader())
+        //                    {
+        //                        while (readerScore.Read())
+        //                        {
+        //                            scores.Add(new Score((int) readerScore.GetInt64(0), (int) readerScore.GetInt64(1)));
+        //                        }
+        //                    }
+                            
+        //                    TabJoueurs[i] = new Joueur(readerJoueur.GetString(1), readerJoueur.GetString(2), readerJoueur.GetString(3));
+        //                    i++;
+        //                }
+        //            }
+
+        //        }
+        //    }
+        //    connection.Close();
+        //}
+    }
 }
