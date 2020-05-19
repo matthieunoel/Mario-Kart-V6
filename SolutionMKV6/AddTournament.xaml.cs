@@ -45,20 +45,16 @@ namespace SolutionMKV6
 
             this.MonDataGrid.ItemsSource = JoueurTable;
 
-            for (int i = 0; i < 8; i++)
-            {
-                //JoueurTable[i].SelectedItem = a;
-            }
-
-
         }
 
         private void Button_Ajouter1(object sender, RoutedEventArgs e)
         {
             try
             { 
-                bool parEquipe;
-                bool avecIA;
+                bool parEquipe; //Instanciation de la variable de l'état de la checkbox du choix "Par Equipe"
+                bool avecIA; //Instanciation de la variable de l'état de la checkbox du choix "Avec IA"
+
+                //Determination de l'état de la checkbox Par Equipe
                 if (ParEquipeCheck.IsChecked.Value == true)
                 {
                     parEquipe = true;
@@ -68,6 +64,7 @@ namespace SolutionMKV6
                     parEquipe = false;
                 }
 
+                //Determination de l'état de la checkbox Avec IA
                 if (AvecIACheck.IsChecked.Value == true)
                 {
                     avecIA = true;
@@ -77,40 +74,62 @@ namespace SolutionMKV6
                     avecIA = false;
                 }
 
+                //Message d'erreur si la vitesse n'a pas été séléctionnée
                 if (ListeVitesse.SelectedItem == null)
                 {
                     MessageBox.Show("Attention vous n'avez pas rentree toutes les donnees necessaires.", "Vitesse non Renseignée", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
+                //Message d'erreur si le mode de jeu n'a pas été séléctionné
                 if (ListeModeJeu.SelectedItem == null)
                 {
                     MessageBox.Show("Attention vous n'avez pas rentree toutes les donnees necessaires.", "Mode de jeu non renseigné", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
+                //Les pseudo, Personnage et Kart des 8 joueurs sont enregistré dans un tableau TableJoueurs
                 Joueur[] TableJoueurs = this.MonDataGrid.ItemsSource.Cast<Joueur>().ToArray();
 
-                for (int i = 0; i < TableJoueurs.Length; i++)
+                //Determination et annulation de la confirmation de l'ajout en cas de doublons dans le tableau 
+                int i, j;
+                int doublon = 0;
+                for (i = 0, j = 1; j < TableJoueurs.Length; j++)
                 {
-                    if (TableJoueurs.Contains(TableJoueurs[i]) == true)
+                    if (TableJoueurs[i] != TableJoueurs[j])
                     {
-                        MessageBox.Show("Attention, vous avez rentré la même valeur dans le tableau", "Doublons dans le tableau", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        break;
+                        i++;
+                        if (i != j)
+                        {
+                            doublon++;
+                        }
                     }
                 }
 
+                if (doublon > 0)
+                {
+                    MessageBox.Show("Attention, vous avez rentré la même valeur dans le tableau", "Doublons dans le tableau", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                    
+                
+
+                //Determination et annulation de la confirmation de l'ajout en cas de caractères spéciaux dans le nom du tournoi
                 if ((Nom_du_tournoi.Text).Contains("&") == true || (Nom_du_tournoi.Text).Contains("é") == true || (Nom_du_tournoi.Text).Contains("~") == true || (Nom_du_tournoi.Text).Contains("\"") == true || (Nom_du_tournoi.Text).Contains("#") == true || (Nom_du_tournoi.Text).Contains("'") == true || (Nom_du_tournoi.Text).Contains("{") == true || (Nom_du_tournoi.Text).Contains("(") == true || (Nom_du_tournoi.Text).Contains("[") == true || (Nom_du_tournoi.Text).Contains("-") == true || (Nom_du_tournoi.Text).Contains("|") == true || (Nom_du_tournoi.Text).Contains("è") == true || (Nom_du_tournoi.Text).Contains("`") == true || (Nom_du_tournoi.Text).Contains("_") == true || (Nom_du_tournoi.Text).Contains("\\") == true || (Nom_du_tournoi.Text).Contains("ç") == true || (Nom_du_tournoi.Text).Contains("^") == true || (Nom_du_tournoi.Text).Contains("à") == true || (Nom_du_tournoi.Text).Contains("@") == true || (Nom_du_tournoi.Text).Contains(")") == true || (Nom_du_tournoi.Text).Contains("]") == true || (Nom_du_tournoi.Text).Contains("=") == true || (Nom_du_tournoi.Text).Contains("}") == true || (Nom_du_tournoi.Text).Contains("^") == true || (Nom_du_tournoi.Text).Contains("¨") == true || (Nom_du_tournoi.Text).Contains("°") == true || (Nom_du_tournoi.Text).Contains("+") == true || (Nom_du_tournoi.Text).Contains("$") == true || (Nom_du_tournoi.Text).Contains("£") == true || (Nom_du_tournoi.Text).Contains("¤") == true || (Nom_du_tournoi.Text).Contains("ù") == true || (Nom_du_tournoi.Text).Contains("%") == true || (Nom_du_tournoi.Text).Contains("*") == true || (Nom_du_tournoi.Text).Contains("µ") == true || (Nom_du_tournoi.Text).Contains(",") == true || (Nom_du_tournoi.Text).Contains("?") == true || (Nom_du_tournoi.Text).Contains(";") == true || (Nom_du_tournoi.Text).Contains(".") == true || (Nom_du_tournoi.Text).Contains(":") == true || (Nom_du_tournoi.Text).Contains("/") == true || (Nom_du_tournoi.Text).Contains("!") == true || (Nom_du_tournoi.Text).Contains("§") == true)
                 {
                     MessageBox.Show("Attention, vous avez rentré un mauvais caractère pour le nom du Tournoi", "Nom du tournoi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
                 }
 
-
+                //Envoi des données en cas d'appuie sur le bouton Confirmer
                 passerelle.AddTournament(new Tournament(Nom_du_tournoi.Text, ListeModeJeu.SelectedItem.ToString(), ListeVitesse.SelectedItem.ToString(), avecIA, parEquipe, TableJoueurs));
+                MessageBox.Show("Votre ajout a bien été confirmé.", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
 
 
 
             }
+            //Exception
             catch (Exception ex)
             {
                 MessageBox.Show($"Il y a eu une erreur : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -120,15 +139,8 @@ namespace SolutionMKV6
 
         private void Button_Retour(object sender, RoutedEventArgs e)
         {
-            //this.Content = this.previousPage.Content;
 
-            //this.Content = this.previousPage.savedContent.Content;
-
-            //MessageBox.Show("Bite", "Message de bite poilue tro drol");
-            
-            this.Content = (new MainWindow()).Content;
-            Application.Current.Run();
-            Application.Current.Shutdown();
+            this.Close();
         }
 
     }
