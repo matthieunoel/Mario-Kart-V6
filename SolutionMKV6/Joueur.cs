@@ -18,7 +18,7 @@ namespace SolutionMKV6
         public string Nom { get => nom; set => nom = value; }
         public string Personnage { get => personnage; set => personnage = value; }
         public string Kart { get => kart; set => kart = value; }
-        internal List<Score> Scores { get => scores; set => scores = value; }
+        public List<Score> Scores { get => scores; set => scores = value; }
         
         public Joueur()
         {

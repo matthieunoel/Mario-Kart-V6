@@ -362,6 +362,41 @@ namespace SolutionMKV6
             }
         }
 
+        public Tournament updateTournament(Tournament tournament)
+        {
+
+            try
+            {
+
+                using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
+                {
+                    connection.Open();
+
+                    var command = connection.CreateCommand();
+                    command.CommandText =
+                    $"UPDATE tournament SET nom='{tournament.Nom}', modeJeu={tournament}, vitesse={tournament}, avecIA={tournament}, avecEquipe={tournament} WHERE id={tournament.Id}";
+                    command.ExecuteNonQuery();
+
+                    connection.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur est apparue : {ex.Message}",
+                                   "Erreur",
+                                   MessageBoxButton.OK,
+                                   MessageBoxImage.Error);
+                throw;
+            }
+
+
+
+
+
+            return tournament;
+        }
+
         //public void AddJoeur(Joueur joueur)
         //{
         //    using (var connection = new SqliteConnection($"Data Source={this.filePath}"))
