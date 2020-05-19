@@ -46,6 +46,6 @@ namespace SolutionMKV6
             this.tournamentList = passerelle.GetAllTournaments();
             this.mainDataGrid.ItemsSource = tournamentList;
 
-        }
+        }   
     }
 }  
