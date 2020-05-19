@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SolutionMKV6"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Click="BtnClickAddTournament" Content="Creer un tournoi" HorizontalAlignment="Left" Margin="564,121,0,0" VerticalAlignment="Top" Width="115"/>
-        <Button Click="BtnClickSeeTournament" Content="Voir un tournoi" HorizontalAlignment="Left" Margin="564,181,0,0" VerticalAlignment="Top" Width="115"/>
-        <DataGrid x:Name="mainDataGrid" HorizontalAlignment="Left" Height="268" Margin="139,88,0,0" VerticalAlignment="Top" Width="383" Initialized="Initialized" IsReadOnly="True" SelectedCellsChanged="DataGridSelectedCellsChanged"/>
+        Title="MainWindow" Height="465" Width="878">
+    <Grid Margin="0,0,2,-1">
+        <Button Click="BtnClickAddTournament" Content="Creer un tournoi" HorizontalAlignment="Left" Margin="618,109,0,0" VerticalAlignment="Top" Width="115"/>
+        <Button Click="BtnClickSeeTournament" Content="Voir un tournoi" HorizontalAlignment="Left" Margin="618,172,0,0" VerticalAlignment="Top" Width="115"/>
+        <DataGrid x:Name="mainDataGrid" HorizontalAlignment="Left" Height="268" Margin="139,88,0,0" VerticalAlignment="Top" Width="403" Initialized="Initialized" IsReadOnly="True" SelectedCellsChanged="DataGridSelectedCellsChanged"/>
         <Label Content="Tournois" HorizontalAlignment="Left" Margin="291,26,0,0" VerticalAlignment="Top" Width="99" FontSize="20" FontFamily="Segoe UI Black"/>
     </Grid>
 </Window>
