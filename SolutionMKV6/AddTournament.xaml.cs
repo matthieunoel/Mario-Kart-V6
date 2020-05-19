@@ -143,7 +143,12 @@ namespace SolutionMKV6
         //Bouton retour qui ferme la fenêtre
         private void Button_Retour(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            MessageBoxResult result = MessageBox.Show("Êtes vous sûr de vouloir partir ?", "Partir", MessageBoxButton.YesNo, MessageBoxImage.Information);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                this.Close();
+            }
         }
 
     }

@@ -32,7 +32,7 @@
         <Button Content="Edit" HorizontalAlignment="Left" Margin="550,160,0,0" VerticalAlignment="Top" Width="80"  Height="40" Click="Button_Edit"/>
         <Button Content="Refresh" HorizontalAlignment="Left" Margin="550,240,0,0" VerticalAlignment="Top" Width="80" Height="40" Click="Button_Refresh"/>
         <Button Content="Export" HorizontalAlignment="Left" Margin="550,320,0,0" VerticalAlignment="Top" Width="80" Height="40" Click="Button_Export"/>
-        <Label Content="Modifer les tournois" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Width="300" TextOptions.TextHintingMode="Animated" FontSize="16" Height="30"/>
+        <Label Content="Modifer les tournois" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Width="300" TextOptions.TextHintingMode="Animated" FontSize="16" Height="30" Foreground="white" />
 
     </Grid>
 </Window>
