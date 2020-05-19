@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
     <Grid Margin="0,0,2,-1">
-        <Button Click="BtnClickAddTournament" Content="Creer un tournoi" HorizontalAlignment="Left" Margin="618,109,0,0" VerticalAlignment="Top" Width="115"/>
-        <Button Click="BtnClickSeeTournament" Content="Voir un tournoi" HorizontalAlignment="Left" Margin="618,172,0,0" VerticalAlignment="Top" Width="115"/>
-        <DataGrid x:Name="mainDataGrid" HorizontalAlignment="Left" Height="268" Margin="118,82,0,0" VerticalAlignment="Top" Width="472" Initialized="Initialized" IsReadOnly="True" SelectedCellsChanged="DataGridSelectedCellsChanged"/>
-        <Label Content="Tournois" HorizontalAlignment="Left" Margin="291,26,0,0" VerticalAlignment="Top" Width="99" FontSize="20" FontFamily="Segoe UI Black"/>
-        <Button Click="Refresh" Content="Rafraichir" HorizontalAlignment="Left" Margin="683,345,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Click="BtnClickAddTournament" Content="Creer un tournoi" HorizontalAlignment="Left" Margin="627,52,0,0" VerticalAlignment="Top" Width="115"/>
+        <Button Click="BtnClickSeeTournament" Content="Voir un tournoi" HorizontalAlignment="Left" Margin="627,77,0,0" VerticalAlignment="Top" Width="115"/>
+        <DataGrid x:Name="mainDataGrid" HorizontalAlignment="Left" Height="345" Margin="50,52,0,0" VerticalAlignment="Top" Width="572" Initialized="Initialized" IsReadOnly="True" SelectedCellsChanged="DataGridSelectedCellsChanged"/>
+        <Label Content="Tournois" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Width="472" FontSize="20" FontFamily="Segoe UI Black"/>
+        <Button Click="Refresh" Content="Rafraichir" HorizontalAlignment="Left" Margin="627,102,0,0" VerticalAlignment="Top" Width="115"/>
     </Grid>
 </Window>

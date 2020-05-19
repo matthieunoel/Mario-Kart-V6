@@ -1,7 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Windows;
 
 namespace SolutionMKV6
@@ -362,7 +361,7 @@ namespace SolutionMKV6
             }
         }
 
-        public Tournament updateTournament(Tournament tournament)
+        public Tournament updateTournamentScores(Tournament tournament)
         {
 
             try
@@ -372,12 +371,72 @@ namespace SolutionMKV6
                 {
                     connection.Open();
 
-                    var command = connection.CreateCommand();
-                    command.CommandText =
-                    $"UPDATE tournament SET nom='{tournament.Nom}', modeJeu={tournament}, vitesse={tournament}, avecIA={tournament}, avecEquipe={tournament} WHERE id={tournament.Id}";
-                    command.ExecuteNonQuery();
+                    //var command = connection.CreateCommand();
+                    //command.CommandText =
+                    //$"UPDATE tournament SET nom='{tournament.Nom}', modeJeu='{tournament.ModeJeu}', vitesse='{tournament.Vitesse}', avecIA='{tournament.AvecIA}', avecEquipe='{tournament.EnEquipe}' WHERE id={tournament.Id}";
+                    //command.ExecuteNonQuery();
+
+                    //foreach (Joueur joueur in tournament.Joueurs)
+                    //{
+                    //    //command = connection.CreateCommand();
+                    //    //command.CommandText =
+                    //    //$"UPDATE joueur SET nom='{joueur.Nom}', personnage='{joueur.Personnage}', kart='{joueur.Kart}' WHERE id={joueur.Id}";
+                    //    //command.ExecuteNonQuery();
+
+                    //    foreach (Score score in joueur.Scores)
+                    //    {
+                    //        if (score.Id != null && score.Id >= 0)
+                    //        {
+                    //            var command = connection.CreateCommand();
+                    //            command.CommandText =
+                    //            $"UPDATE score SET numCourse={score.NumCourse}, valeur={score.Valeur} WHERE id={score.Id}";
+                    //            command.ExecuteNonQuery();
+                    //        }
+                    //        else
+                    //        {
+                    //            var command = connection.CreateCommand();
+                    //            command.CommandText =
+                    //            $"INSERT INTO score (numCourse, valeur, joueurId) VALUES ({score.NumCourse}, {score.Valeur}, {joueur.Id});";
+                    //            command.ExecuteNonQuery();
+
+                    //            command.CommandText = "select last_insert_rowid()";
+                    //            score.Id = (int)(Int64)command.ExecuteScalar();
+                    //            Console.WriteLine(score.Id);
+
+                    //        }
+                    //    }
+
+                    //}
+
+                    for (int i = 0; i < tournament.Joueurs.Length; i++)
+                    {
+                        for (int j = 0; j < tournament.Joueurs[i].Scores.Count; j++)
+                        {
+                            if (tournament.Joueurs[i].Scores[j].Id != null && tournament.Joueurs[i].Scores[j].Id >= 0)
+                            {
+                                var command = connection.CreateCommand();
+                                command.CommandText =
+                                $"UPDATE score SET numCourse={tournament.Joueurs[i].Scores[j].NumCourse}, valeur={tournament.Joueurs[i].Scores[j].Valeur} WHERE id={tournament.Joueurs[i].Scores[j].Id}";
+                                command.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                var command = connection.CreateCommand();
+                                command.CommandText =
+                                $"INSERT INTO score (numCourse, valeur, joueurId) VALUES ({tournament.Joueurs[i].Scores[j].NumCourse}, {tournament.Joueurs[i].Scores[j].Valeur}, {tournament.Joueurs[i].Id});";
+                                command.ExecuteNonQuery();
+
+                                command.CommandText = "select last_insert_rowid()";
+                                tournament.Joueurs[i].Scores[j].Id = (int)(Int64)command.ExecuteScalar();
+                                Console.WriteLine(tournament.Joueurs[i].Scores[j].Id);
+
+                            }
+                        }
+                    }
 
                     connection.Close();
+
+                    return tournament;
 
                 }
             }
@@ -389,12 +448,6 @@ namespace SolutionMKV6
                                    MessageBoxImage.Error);
                 throw;
             }
-
-
-
-
-
-            return tournament;
         }
 
         //public void AddJoeur(Joueur joueur)
@@ -439,7 +492,7 @@ namespace SolutionMKV6
         //                            scores.Add(new Score((int) readerScore.GetInt64(0), (int) readerScore.GetInt64(1)));
         //                        }
         //                    }
-                            
+
         //                    TabJoueurs[i] = new Joueur(readerJoueur.GetString(1), readerJoueur.GetString(2), readerJoueur.GetString(3));
         //                    i++;
         //                }

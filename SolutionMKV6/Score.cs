@@ -24,6 +24,7 @@ namespace SolutionMKV6
 
         public Score(int numCourse, int score)
         {
+            this.id = -1;
             this.NumCourse = numCourse;
             this.Valeur = score;
         }

@@ -31,7 +31,22 @@ namespace SolutionMKV6
 
             foreach (Joueur joueur in tournamentRecent.Joueurs)
             {
-                JoueurDisplayList.Add(new JoueurDisplay($"{joueur.Nom} ({joueur.Personnage}/{joueur.Kart})"));
+                Score[] ScoresJoueur = new Score[4];
+
+                foreach (var score in joueur.Scores)
+                {
+                    ScoresJoueur[score.NumCourse-1] = score;
+                }
+
+                for (int i = 0; i < ScoresJoueur.Length; i++)
+                {
+                    if (ScoresJoueur[i] == null)
+                    {
+                        ScoresJoueur[i] = new Score();
+                    }
+                }
+
+                JoueurDisplayList.Add(new JoueurDisplay($"{joueur.Nom} ({joueur.Personnage}/{joueur.Kart})", ScoresJoueur[0], ScoresJoueur[1], ScoresJoueur[2], ScoresJoueur[3]));
             }
 
             this.Grid1.ItemsSource = JoueurDisplayList;
@@ -83,9 +98,33 @@ namespace SolutionMKV6
                 tournamentRecent.Joueurs[i].Scores = listeDesScores;
             }
 
+            JoueurDisplayList = new List<JoueurDisplay>();
+
+            foreach (Joueur joueur in tournamentRecent.Joueurs)
+            {
+                Score[] ScoresJoueur = new Score[4];
+
+                foreach (var score in joueur.Scores)
+                {
+                    ScoresJoueur[score.NumCourse - 1] = score;
+                }
+
+                for (int i = 0; i < ScoresJoueur.Length; i++)
+                {
+                    if (ScoresJoueur[i] == null)
+                    {
+                        ScoresJoueur[i] = new Score();
+                    }
+                }
+
+                JoueurDisplayList.Add(new JoueurDisplay($"{joueur.Nom} ({joueur.Personnage}/{joueur.Kart})", ScoresJoueur[0], ScoresJoueur[1], ScoresJoueur[2], ScoresJoueur[3]));
+            }
+
+            this.Grid1.ItemsSource = JoueurDisplayList;
+
             try
             {
-                this.tournamentRecent = passerelle.updateTournament(this.tournamentRecent);
+                this.tournamentRecent = passerelle.updateTournamentScores(this.tournamentRecent);
                 MessageBox.Show($"La sauvegarde s'est affectuée avec succès.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
@@ -115,14 +154,54 @@ namespace SolutionMKV6
         private string score2;
         private string score3;
         private string score4;
+        private int total;
 
-        public JoueurDisplay(string nomParam)
+        //public JoueurDisplay(string nomParam)
+        //{
+        //    this.Nom = nomParam;
+        //}
+
+        public JoueurDisplay(string nomParam, Score score1, Score score2, Score score3, Score score4)
         {
             this.Nom = nomParam;
-            score1 = string.Empty;
-            score2 = string.Empty;
-            score3 = string.Empty;
-            score4 = string.Empty;
+
+            if (score1 != (new Score()))
+            {
+                this.Score1 = score1.Valeur.ToString();
+            }
+            else
+            {
+                this.score1 = string.Empty;
+            }
+
+            if (score2 != (new Score()))
+            {
+                this.Score2 = score2.Valeur.ToString();
+            }
+            else
+            {
+                this.score1 = string.Empty;
+            }
+
+            if (score3 != (new Score()))
+            {
+                this.Score3 = score3.Valeur.ToString();
+            }
+            else
+            {
+                this.score1 = string.Empty;
+            }
+
+            if (score4 != (new Score()))
+            {
+                this.Score4 = score4.Valeur.ToString();
+            }
+            else
+            {
+                this.score1 = string.Empty;
+            }
+
+            this.Total = score1.Valeur + score2.Valeur + score3.Valeur + score4.Valeur;
         }
 
         public string Nom { get => nom; set => nom = value; }
@@ -130,5 +209,6 @@ namespace SolutionMKV6
         public string Score2 { get => score2; set => score2 = value; }
         public string Score3 { get => score3; set => score3 = value; }
         public string Score4 { get => score4; set => score4 = value; }
+        public int Total { get => total; set => total = value; }
     }
 }
