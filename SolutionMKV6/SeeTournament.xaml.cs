@@ -22,37 +22,40 @@ namespace SolutionMKV6
     {
         private ClassePasserelle passerelle;
         private List<Tournament> tournList;
-        private Tournament lastSelectedTournament;
+        private Tournament tournamentRecent;
 
-        public SeeTournament(ClassePasserelle passerelleParam)
+        public SeeTournament(ClassePasserelle passerelleParam, Tournament tournament)
         {
             InitializeComponent();
             this.passerelle = passerelleParam;
+            this.tournamentRecent = tournament;
+            MessageBox.Show(tournament.Nom);
 
             //string[] tabx = new string[] { "tournament.id", "tournament.nom", "tournament.joueur" };
             //this.Grid1.ItemsSource = tabx;
             //this.JoueursList = passerelle.HeyJoeuur();
-            this.tournList = passerelle.GetAllTournaments();
-
-            this.Grid1.ItemsSource = tournList;
-
+            //this.tournList = passerelle.GetAllTournaments();
+            this.Grid1.ItemsSource = tournamentRecent.Joueurs;
+            
         }
 
         private void DataGridSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            this.lastSelectedTournament = (Tournament)e.AddedCells[0].Item;
+            //this.lastSelectedTournament = (Tournament)e.AddedCells[0].Item;
            
         }
 
-
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-            //passerelle.addScoreToJoueur();
+            //Score scar = new Score(, 100);
+            //passerelle.addScoreToJoueur(scar);
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)
         {
-            //passerelle.editScore();
+            Score score1 = new Score(2, 500);
+
+            passerelle.editScore(score1);
         }
 
         private void Button_Refresh(object sender, RoutedEventArgs e)
@@ -64,5 +67,6 @@ namespace SolutionMKV6
         {
 
         }
+
     }
 }
