@@ -24,6 +24,8 @@ namespace SolutionMKV6
         private List<Tournament> tournamentList;
         private Tournament lastSelectedTournament;
 
+
+
         private void BtnClickAddTournament(object sender, RoutedEventArgs e)
         {
             AddTournament add = new AddTournament(this.passerelle);
@@ -47,20 +49,73 @@ namespace SolutionMKV6
         {
             this.passerelle = new ClassePasserelle();
             this.tournamentList = passerelle.GetAllTournaments();
-            this.mainDataGrid.ItemsSource = tournamentList;
+            //this.mainDataGrid.ItemsSource = tournamentList;
+
+            List<TournamentDisplay> TournamentDisplaysList = new List<TournamentDisplay>();
+
+            //foreach (Tournament tournament in tournamentList)
+            //{
+            //    TournamentDisplaysList.Add(new TournamentDisplay($"{tournament.Nom} -> {tournament.Date}"));
+            //}
+
+            for (int i = 0; i < tournamentList.Count; i++)
+            {
+                TournamentDisplaysList.Add(new TournamentDisplay(i, $"{tournamentList[i].Nom} -> {tournamentList[i].Date}"));
+            }
+
+            this.mainDataGrid.ItemsSource = TournamentDisplaysList;
 
         }
 
         private void DataGridSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            this.lastSelectedTournament = (Tournament)e.AddedCells[0].Item;
-            //MessageBox.Show(selectedTournament.Nom, "DEBUG", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (e.AddedCells.Count > 0)
+            {
+                //this.lastSelectedTournament = (Tournament)e.AddedCells[0].Item;
+                int ligneNb = ((TournamentDisplay)e.AddedCells[0].Item).Index;
+                //Console.WriteLine(ligneNb);
+
+                this.lastSelectedTournament = tournamentList[ligneNb];
+
+                Btn_See.IsEnabled = true;
+                //MessageBox.Show(selectedTournament.Nom, "DEBUG", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                Btn_See.IsEnabled = false;
+            }
         }
 
         private void Refresh(object sender, RoutedEventArgs e)
         {
             this.tournamentList = passerelle.GetAllTournaments();
-            this.mainDataGrid.ItemsSource = tournamentList;
+            //this.mainDataGrid.ItemsSource = TournamentDisplayList;
+            List<TournamentDisplay> TournamentDisplaysList = new List<TournamentDisplay>();
+
+            for (int i = 0; i < tournamentList.Count; i++)
+            {
+                TournamentDisplaysList.Add(new TournamentDisplay(i, $"{tournamentList[i].Nom} -> {tournamentList[i].Date}"));
+            }
+
+            this.mainDataGrid.ItemsSource = TournamentDisplaysList;
+
+
         }
     }
+
+    public class TournamentDisplay
+    {
+        private string nom;
+        private int index;
+
+        public TournamentDisplay(int index, string nomTournoi)
+        {
+            this.Index = index;
+            this.Nom = nomTournoi;
+        }
+
+        public string Nom { get => nom; set => nom = value; }
+        public int Index { get => index; set => index = value; }
+    }
+
 }  

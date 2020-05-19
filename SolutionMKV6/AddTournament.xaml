@@ -16,7 +16,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Pseudo" Width="106" Binding="{Binding Nom}"/>
                 <DataGridComboBoxColumn Header="Personnage" Width="106" x:Name="ListePerso" SelectedItemBinding="{Binding Personnage}" />
-                <DataGridComboBoxColumn Header="Kart" MinWidth="102" MaxWidth="200" x:Name="ListeKart" SelectedItemBinding="{Binding Kart}" />
+                <DataGridComboBoxColumn Header="Kart" Width="*" x:Name="ListeKart" SelectedItemBinding="{Binding Kart}" />
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Mode de jeu :" HorizontalAlignment="Left" Margin="426,106,0,0" VerticalAlignment="Top"/>
