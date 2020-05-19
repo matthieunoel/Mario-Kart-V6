@@ -10,13 +10,14 @@
         <Grid.Background>
             <ImageBrush ImageSource="284069_original.jpg"></ImageBrush>
         </Grid.Background>
-        <DataGrid x:Name="Grid1" HorizontalAlignment="Left" Height="280" Margin="10,80,0,0" VerticalAlignment="Top" Width="469" AutoGenerateColumns="False" SelectedCellsChanged="DataGridSelectedCellsChanged">
+        <DataGrid x:Name="Grid1" HorizontalAlignment="Left" Height="280" Margin="10,80,0,0" VerticalAlignment="Top" Width="535" AutoGenerateColumns="False" SelectedCellsChanged="DataGridSelectedCellsChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="id" x:Name="idTour" Binding="{Binding Id}" Width="70"></DataGridTextColumn>
-                <DataGridTextColumn Header="Tournois" x:Name="NomTour" Binding="{Binding Nom}" Width="70"></DataGridTextColumn>
-                <DataGridTextColumn Header="Date" x:Name="DateTour" Binding="{Binding Date}" Width="70"></DataGridTextColumn>
                 <DataGridTextColumn Header="Joueurs" x:Name="ListeJoueur" Binding="{Binding Joueurs}" Width="70"></DataGridTextColumn>
-                <DataGridTextColumn Header="Score" x:Name="Score" Binding="{Binding Score}" Width="60"></DataGridTextColumn>
+                <DataGridTextColumn Header="Score 1" x:Name="Score" Binding="{Binding Score}" Width="60"></DataGridTextColumn>
+                <DataGridTextColumn Header="Score 2" x:Name="Score2" Binding="{Binding Score}" Width="60"></DataGridTextColumn>
+                <DataGridTextColumn Header="Score 3" x:Name="Score3" Binding="{Binding Score}" Width="60"></DataGridTextColumn>
+                <DataGridTextColumn Header="Score 4" x:Name="Score4" Binding="{Binding Score}" Width="60"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Add" HorizontalAlignment="Left" Margin="550,80,0,0" VerticalAlignment="Top" Width="90" Height="40" Click="Button_Add"/>

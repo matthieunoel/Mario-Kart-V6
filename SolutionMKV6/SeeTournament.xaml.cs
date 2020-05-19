@@ -35,7 +35,10 @@ namespace SolutionMKV6
             //this.Grid1.ItemsSource = tabx;
             //this.JoueursList = passerelle.HeyJoeuur();
             //this.tournList = passerelle.GetAllTournaments();
+
             this.Grid1.ItemsSource = tournamentRecent.Joueurs;
+            
+            
             
         }
 
