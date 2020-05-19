@@ -27,13 +27,15 @@ namespace SolutionMKV6
         private void BtnClickAddTournament(object sender, RoutedEventArgs e)
         {
             AddTournament add = new AddTournament(this.passerelle);
-            this.Content = add.Content; 
+            add.Show();
         }
 
         private void BtnClickSeeTournament(object sender, RoutedEventArgs e)
         {
             SeeTournament see = new SeeTournament(this.passerelle);
-            this.Content = see.Content;
+            //this.Content = see.Content;
+            see.Show();
+
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
