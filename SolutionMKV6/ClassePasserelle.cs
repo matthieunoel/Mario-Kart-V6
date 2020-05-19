@@ -194,21 +194,21 @@ namespace SolutionMKV6
 
                                     command = connection.CreateCommand();
                                     command.CommandText =
-                                        $"SELECT numCourse, valeur FROM score WHERE joueurId={readerJoueur.GetInt64(0)}";
+                                        $"SELECT id, numCourse, valeur FROM score WHERE joueurId={readerJoueur.GetInt64(0)}";
                                     using (var readerScore = command.ExecuteReader())
                                     {
                                         while (readerScore.Read())
                                         {
-                                            scores.Add(new Score((int)readerScore.GetInt64(0), (int)readerScore.GetInt64(1)));
+                                            scores.Add(new Score((int)readerScore.GetInt64(0), (int)readerScore.GetInt64(1), (int)readerScore.GetInt64(2)));
                                         }
                                     }
 
-                                    TabJoueurs[i] = new Joueur(readerJoueur.GetString(1), readerJoueur.GetString(2), readerJoueur.GetString(3));
+                                    TabJoueurs[i] = new Joueur((int)readerJoueur.GetInt64(0), readerJoueur.GetString(1), readerJoueur.GetString(2), readerJoueur.GetString(3), scores);
                                     i++;
                                 }
                             }
 
-                            ListeTournament.Add(new Tournament(reader.GetString(1), reader.GetDateTime(2), reader.GetString(3), reader.GetString(4), reader.GetBoolean(5), reader.GetBoolean(6), TabJoueurs));
+                            ListeTournament.Add(new Tournament((int)reader.GetInt64(0), reader.GetString(1), reader.GetDateTime(2), reader.GetString(3), reader.GetString(4), reader.GetBoolean(5), reader.GetBoolean(6), TabJoueurs));
                         }
                     }
 
@@ -319,23 +319,6 @@ namespace SolutionMKV6
                 throw;
             }
         }
-
-        //public void HeyJoeuur(Joueur joueur)
-        //{
-        //    using (SqliteConnection connection = new SqliteConnection($"Data Source={this.filePath}"))
-        //    {
-        //        connection.Open();
-
-        //        var command = connection.CreateCommand();
-        //        command.CommandText =
-        //        $"select * from joueur ";
-        //        command.ExecuteNonQuery();
-
-        //        connection.Close();
-        //    }
-
-        //}
-
 
         /// <summary>
         /// Permet d'éditer le score d'un joueur à partir de l'ID du score.
