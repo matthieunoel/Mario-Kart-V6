@@ -32,7 +32,7 @@ namespace SolutionMKV6
 
         private void BtnClickSeeTournament(object sender, RoutedEventArgs e)
         {
-            SeeTournament see = new SeeTournament(this.passerelle);
+            SeeTournament see = new SeeTournament(this.passerelle, lastSelectedTournament);
             //this.Content = see.Content;
             see.Show();
 
