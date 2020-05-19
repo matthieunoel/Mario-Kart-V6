@@ -26,12 +26,13 @@ namespace SolutionMKV6
             InitializeComponent();
             this.passerelle = passerelle;
 
-            
+            //On fournit les listes aux combo box
             this.ListeKart.ItemsSource = passerelle.ListeKarts;
             this.ListePerso.ItemsSource = passerelle.ListePersonnages;
             this.ListeModeJeu.ItemsSource = passerelle.ModesJeu;
             this.ListeVitesse.ItemsSource = passerelle.Vitesses;
 
+            //on crée les nouveaux joueurs
             Joueur Moi = new Joueur();
             Joueur Moi2 = new Joueur();
             Joueur Moi3 = new Joueur();
@@ -41,8 +42,10 @@ namespace SolutionMKV6
             Joueur Moi7 = new Joueur();
             Joueur Moi8 = new Joueur();
 
+            //on met tous les joueurs dans un tableau
             Joueur[] JoueurTable = new Joueur[8] { Moi, Moi2, Moi3, Moi4, Moi5, Moi6, Moi7, Moi8 };
 
+            //on dit que le datagrid est constitué du tableau de joueur, donc chaque joueur du tableau ajoutera une ligne du datagrid
             this.MonDataGrid.ItemsSource = JoueurTable;
 
         }
@@ -137,9 +140,9 @@ namespace SolutionMKV6
 
         }
 
+        //Bouton retour qui ferme la fenêtre
         private void Button_Retour(object sender, RoutedEventArgs e)
         {
-
             this.Close();
         }
 
