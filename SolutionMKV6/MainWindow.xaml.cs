@@ -22,6 +22,7 @@ namespace SolutionMKV6
     {
         private ClassePasserelle passerelle;
         private List<Tournament> tournamentList;
+        private Tournament lastSelectedTournament;
 
         private void BtnClickAddTournament(object sender, RoutedEventArgs e)
         {
@@ -46,6 +47,12 @@ namespace SolutionMKV6
             this.tournamentList = passerelle.GetAllTournaments();
             this.mainDataGrid.ItemsSource = tournamentList;
 
+        }
+
+        private void DataGridSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            this.lastSelectedTournament = (Tournament)e.AddedCells[0].Item;
+            //MessageBox.Show(selectedTournament.Nom, "DEBUG", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }  
