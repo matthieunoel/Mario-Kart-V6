@@ -56,5 +56,11 @@ namespace SolutionMKV6
             this.lastSelectedTournament = (Tournament)e.AddedCells[0].Item;
             //MessageBox.Show(selectedTournament.Nom, "DEBUG", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        private void Refresh(object sender, RoutedEventArgs e)
+        {
+            this.tournamentList = passerelle.GetAllTournaments();
+            this.mainDataGrid.ItemsSource = tournamentList;
+        }
     }
 }  
