@@ -21,7 +21,9 @@ namespace SolutionMKV6
     public partial class SeeTournament : Window
     {
         private ClassePasserelle passerelle;
-      
+        private List<Tournament> tournList;
+        private Tournament lastSelectedTournament;
+
         public SeeTournament(ClassePasserelle passerelleParam)
         {
             InitializeComponent();
@@ -30,52 +32,27 @@ namespace SolutionMKV6
             //string[] tabx = new string[] { "tournament.id", "tournament.nom", "tournament.joueur" };
             //this.Grid1.ItemsSource = tabx;
             //this.JoueursList = passerelle.HeyJoeuur();
-            
+            this.tournList = passerelle.GetAllTournaments();
+
+            this.Grid1.ItemsSource = tournList;
 
         }
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DataGridSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-
-            
-
-
-            //AdventureWorksLT2008Entities advenWorksEntities = new AdventureWorksLT2008Entities();
-
-            //ObjectQuery<Customer> customers = advenWorksEntities.Customers;
-
-            //var query =
-            //from customer in customers
-            //orderby customer.CompanyName
-            //select new
-            //{
-            //    Tournament.Nom,
-            //    customer.FirstName,
-            //    customer.CompanyName,
-            //    customer.Title,
-            //    customer.EmailAddress,
-            //    customer.Phone,
-            //    customer.SalesPerson
-            //};
-
-            //Grid1.ItemsSource = query.ToList();
+            this.lastSelectedTournament = (Tournament)e.AddedCells[0].Item;
+           
         }
 
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-
+            //passerelle.addScoreToJoueur();
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)
         {
-            //var id = Convert.ToInt32(DgEmp.Rows[e.RowIndex].Cells[2].Value.ToString());
-            //if (id != 0)
-            //{
-            //    // Delete query on basis of id
-            //    GridBind();
-            //    ClearData();
-            //}
+            //passerelle.editScore();
         }
 
         private void Button_Refresh(object sender, RoutedEventArgs e)

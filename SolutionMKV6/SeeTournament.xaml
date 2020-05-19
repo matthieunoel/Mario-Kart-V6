@@ -10,15 +10,15 @@
         <Grid.Background>
             <ImageBrush ImageSource="284069_original.jpg"></ImageBrush>
         </Grid.Background>
-        <DataGrid x:Name="Grid1" HorizontalAlignment="Left" Height="280" Margin="10,80,0,0" VerticalAlignment="Top" Width="469" SelectionChanged="DataGrid_SelectionChanged">
+        <DataGrid x:Name="Grid1" HorizontalAlignment="Left" Height="280" Margin="10,80,0,0" VerticalAlignment="Top" Width="469" SelectedCellsChanged="DataGridSelectedCellsChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Tournois" x:Name="NomTour" Binding="{Binding Nom}" Width="70"></DataGridTextColumn>
                 <DataGridTextColumn Header="Date" x:Name="DateTour" Binding="{Binding Date}" Width="70"></DataGridTextColumn>
-                <DataGridTextColumn Header="Mode du jeu" x:Name="ModeTour" Binding="{Binding ModeJeu}" Width="70"></DataGridTextColumn>
+                <DataGridTextColumn Header="Mode du jeu" x:Name="ModeTour" Binding="{Binding ModeJeu}" Width="110"></DataGridTextColumn>
                 <DataGridTextColumn Header="Vitesse" x:Name="TourVite" Binding="{Binding Vitesse}" Width="70"></DataGridTextColumn>
                 <DataGridTextColumn Header="Joueurs" x:Name="ListeJour" Binding="{Binding Joueurs}" Width="70"></DataGridTextColumn>
-                <DataGridTextColumn Header="En equipe" x:Name="TourM" Binding="{Binding Enequipe}" Width="70"></DataGridTextColumn>
-                <DataGridTextColumn Header="Avec IA" x:Name="TourAI" Binding="{Binding AvecIA}" Width="70"></DataGridTextColumn>
+                <DataGridTextColumn Header="En equipe" x:Name="TourM" Binding="{Binding Enequipe}" Width="60"></DataGridTextColumn>
+                <DataGridTextColumn Header="Avec IA" x:Name="TourAI" Binding="{Binding AvecIA}" Width="50"></DataGridTextColumn>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
@@ -26,18 +26,18 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Vertical">
                                 <TextBlock FontSize="12" Text="Score: " VerticalAlignment="Center" />
-                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Score}" VerticalAlignment="Center" />
+                                <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding Score}" VerticalAlignment="Center" />
                             </StackPanel>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="528,80,0,0" VerticalAlignment="Top" Width="180" Height="40" Click="Button_Add"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="528,160,0,0" VerticalAlignment="Top" Width="180"  Height="40" Click="Button_Edit"/>
-        <Button Content="Refresh" HorizontalAlignment="Left" Margin="528,240,0,0" VerticalAlignment="Top" Width="180" Height="40" Click="Button_Refresh"/>
-        <Button Content="Export" HorizontalAlignment="Left" Margin="528,320,0,0" VerticalAlignment="Top" Width="180" Height="40" Click="Button_Export"/>
-        <Label Content="Modifer les tournois" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Width="800" TextOptions.TextHintingMode="Animated" FontSize="16" Height="30"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="550,80,0,0" VerticalAlignment="Top" Width="90" Height="40" Click="Button_Add"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="550,160,0,0" VerticalAlignment="Top" Width="80"  Height="40" Click="Button_Edit"/>
+        <Button Content="Refresh" HorizontalAlignment="Left" Margin="550,240,0,0" VerticalAlignment="Top" Width="80" Height="40" Click="Button_Refresh"/>
+        <Button Content="Export" HorizontalAlignment="Left" Margin="550,320,0,0" VerticalAlignment="Top" Width="80" Height="40" Click="Button_Export"/>
+        <Label Content="Modifer les tournois" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Width="300" TextOptions.TextHintingMode="Animated" FontSize="16" Height="30"/>
 
     </Grid>
 </Window>
