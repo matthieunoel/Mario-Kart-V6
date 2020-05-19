@@ -27,7 +27,11 @@ namespace SolutionMKV6
         private void BtnClickAddTournament(object sender, RoutedEventArgs e)
         {
             AddTournament add = new AddTournament(this.passerelle);
-            this.Content = add.Content; 
+            //this.Content = add.Content; 
+            add.Show();
+            //add.ShowDialog();
+
+            MessageBox.Show("Message", "TITLE", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void BtnClickSeeTournament(object sender, RoutedEventArgs e)
@@ -38,7 +42,7 @@ namespace SolutionMKV6
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
 
         private void Initialized(object sender, EventArgs e)
