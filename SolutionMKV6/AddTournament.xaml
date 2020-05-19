@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SolutionMKV6"
         mc:Ignorable="d"
-        Title="AddTournament" Height="450" Width="800" Background="#FF7D7979">
+        Title="AddTournament" Height="450" Width="800" Background="white" ResizeMode="NoResize">
 
     <Grid>
         <Grid.RowDefinitions>
