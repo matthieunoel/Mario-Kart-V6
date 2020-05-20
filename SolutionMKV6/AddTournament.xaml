@@ -5,33 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SolutionMKV6"
         mc:Ignorable="d"
-        Title="AddTournament" Height="450" Width="800" Background="white" ResizeMode="NoResize">
+        Title="Gestionnaire des tournois : Organiser un tournoi" Height="450" Width="800" Background="white" ResizeMode="NoResize">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="7*"/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <DataGrid Name="MonDataGrid" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="320" Background="White" AutoGenerateColumns="False" SelectionUnit="Cell" BorderThickness="0" Grid.RowSpan="2" RowHeight="42">
+        <!--<Grid.Background>
+            <ImageBrush ImageSource="284069_original.jpg"></ImageBrush>
+        </Grid.Background>-->
+        <DataGrid Name="MonDataGrid" HorizontalAlignment="Left" Height="371" Margin="50,25,0,0" VerticalAlignment="Top" Width="463" Background="White" AutoGenerateColumns="False" SelectionUnit="Cell">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Pseudo" Width="106" Binding="{Binding Nom}"/>
-                <DataGridComboBoxColumn Header="Personnage" Width="106" x:Name="ListePerso" SelectedItemBinding="{Binding Personnage}" />
-                <DataGridComboBoxColumn Header="Kart" Width="*" x:Name="ListeKart" SelectedItemBinding="{Binding Kart}" />
+                <DataGridTextColumn Header="Pseudo" Width="*" Binding="{Binding Nom}"/>
+                <DataGridComboBoxColumn Header="Personnage" Width="125" x:Name="ListePerso" SelectedItemBinding="{Binding Personnage}"/>
+                <DataGridComboBoxColumn Header="Kart" Width="125" x:Name="ListeKart" SelectedItemBinding="{Binding Kart}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Mode de jeu :" HorizontalAlignment="Left" Margin="426,106,0,0" VerticalAlignment="Top"/>
+        <Label Content="Mode de jeu :" HorizontalAlignment="Left" Margin="541,150,0,0" VerticalAlignment="Top"/>
         <Label Content="   " HorizontalAlignment="Left" Margin="384,17,0,0" VerticalAlignment="Top"/>
-        <Label Content="Nom du Tournoi :" HorizontalAlignment="Left" Margin="358,5,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Nom_du_tournoi" Text="" Height="23" Margin="460,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Vitesse :" HorizontalAlignment="Left" Margin="456,176,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <Label Content="Avec IA :" HorizontalAlignment="Left" Margin="456,48.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <Label Content="Par Equipe :" HorizontalAlignment="Left" Margin="438,117.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <CheckBox x:Name="ParEquipeCheck" HorizontalAlignment="Left" Margin="515,124.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <CheckBox Name="AvecIACheck" HorizontalAlignment="Left" Margin="515,54.2,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <Button Content="Confirmer" HorizontalAlignment="Left" Margin="570,172,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" Height="42" Click="Button_Ajouter1" />
-        <ComboBox x:Name="ListeVitesse" SelectedItem="" HorizontalAlignment="Left" Margin="509,176,0,0" VerticalAlignment="Top" Width="120" Height="26" Grid.RowSpan="2"/>
-        <ComboBox x:Name="ListeModeJeu" SelectedItem=""  HorizontalAlignment="Left" Margin="509,108,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Retour" HorizontalAlignment="Left" Margin="358,172,0,0" Grid.Row="1" VerticalAlignment="Top" Width="124" Height="42" Click="Button_Retour" />
+        <Label Content="Nom :" HorizontalAlignment="Left" Margin="522,25,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Nom_du_tournoi" Text="" Height="23" Margin="522,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <Label Content="Vitesse :" HorizontalAlignment="Left" Margin="571,181,0,0" VerticalAlignment="Top"/>
+        <Label Content="Avec IA :" HorizontalAlignment="Left" Margin="569,212,0,0" VerticalAlignment="Top"/>
+        <Label Content="Par Equipe :" HorizontalAlignment="Left" Margin="552,243,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="ParEquipeCheck" HorizontalAlignment="Left" Margin="629,250,0,0" VerticalAlignment="Top"/>
+        <CheckBox Name="AvecIACheck" HorizontalAlignment="Left" Margin="629,219,0,0" VerticalAlignment="Top"/>
+        <Button Content="Confirmer" HorizontalAlignment="Left" Margin="644,356,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="Button_Ajouter1" />
+        <ComboBox x:Name="ListeVitesse" SelectedItem="" HorizontalAlignment="Left" Margin="629,181,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
+        <ComboBox x:Name="ListeModeJeu" SelectedItem=""  HorizontalAlignment="Left" Margin="629,150,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
+        <Button Content="Retour" HorizontalAlignment="Left" Margin="539,356,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="Button_Retour" />
 
     </Grid>
 </Window>

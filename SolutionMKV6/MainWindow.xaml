@@ -5,16 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SolutionMKV6"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
+        Title="Gestionnaire des tournois : Menu" Height="450" Width="800" ResizeMode="NoResize">
     <Grid Margin="0,0,2,-1">
-        <Button Click="BtnClickAddTournament" Content="Creer un tournoi" HorizontalAlignment="Left" Margin="618,109,0,0" VerticalAlignment="Top" Width="115"/>
-        <Button Click="BtnClickSeeTournament" x:Name="Btn_See" Content="Voir un tournoi" HorizontalAlignment="Left" Margin="618,172,0,0" VerticalAlignment="Top" Width="115" IsEnabled="False" />
-        <DataGrid x:Name="mainDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="268" Margin="118,82,0,0" VerticalAlignment="Top" Width="472" Initialized="Initialized" IsReadOnly="True" SelectedCellsChanged="DataGridSelectedCellsChanged">
+        <!--<Grid.Background>
+            <ImageBrush ImageSource="284069_original.jpg"></ImageBrush>
+        </Grid.Background>-->
+        <Button Click="BtnClickAddTournament" Content="Creer un tournoi" HorizontalAlignment="Left" Margin="642,52,0,0" VerticalAlignment="Top" Width="100" Height="40" HorizontalContentAlignment="Center"/>
+        <Button Click="BtnClickSeeTournament" x:Name="Btn_See" Content="Voir un tournoi" HorizontalAlignment="Left" Margin="642,97,0,0" VerticalAlignment="Top" Width="100" Height="40" IsEnabled="False" />
+        <DataGrid x:Name="mainDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="345" Margin="50,52,0,0" VerticalAlignment="Top" Width="572" Initialized="Initialized" IsReadOnly="True" SelectedCellsChanged="DataGridSelectedCellsChanged" CanUserResizeRows="False" SelectionMode="Single">
             <DataGrid.Columns >
                 <DataGridTextColumn x:Name="Nom" Binding="{Binding Nom}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Tournois" HorizontalAlignment="Left" Margin="291,26,0,0" VerticalAlignment="Top" Width="99" FontSize="20" FontFamily="Segoe UI Black"/>
-        <Button Click="Refresh" Content="Rafraichir" HorizontalAlignment="Left" Margin="683,345,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Gestionnaire des tournois ESport de Mario Kart Wii" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Width="572" FontSize="20" FontFamily="Segoe UI Black"/>
+        <Button Click="Refresh" Content="Rafraichir" HorizontalAlignment="Left" Margin="642,357,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
     </Grid>
 </Window>

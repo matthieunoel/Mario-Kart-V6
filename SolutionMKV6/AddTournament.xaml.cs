@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SolutionMKV6
 {
@@ -53,7 +43,7 @@ namespace SolutionMKV6
         private void Button_Ajouter1(object sender, RoutedEventArgs e)
         {
             try
-            { 
+            {
                 bool parEquipe; //Instanciation de la variable de l'état de la checkbox du choix "Par Equipe"
                 bool avecIA; //Instanciation de la variable de l'état de la checkbox du choix "Avec IA"
 
@@ -114,8 +104,8 @@ namespace SolutionMKV6
                     MessageBox.Show("Attention, vous avez rentré la même valeur dans le tableau", "Doublons dans le tableau", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                    
-                
+
+
 
                 //Determination et annulation de la confirmation de l'ajout en cas de caractères spéciaux dans le nom du tournoi
                 if ((Nom_du_tournoi.Text).Contains("&") == true || (Nom_du_tournoi.Text).Contains("é") == true || (Nom_du_tournoi.Text).Contains("~") == true || (Nom_du_tournoi.Text).Contains("\"") == true || (Nom_du_tournoi.Text).Contains("#") == true || (Nom_du_tournoi.Text).Contains("'") == true || (Nom_du_tournoi.Text).Contains("{") == true || (Nom_du_tournoi.Text).Contains("(") == true || (Nom_du_tournoi.Text).Contains("[") == true || (Nom_du_tournoi.Text).Contains("-") == true || (Nom_du_tournoi.Text).Contains("|") == true || (Nom_du_tournoi.Text).Contains("è") == true || (Nom_du_tournoi.Text).Contains("`") == true || (Nom_du_tournoi.Text).Contains("_") == true || (Nom_du_tournoi.Text).Contains("\\") == true || (Nom_du_tournoi.Text).Contains("ç") == true || (Nom_du_tournoi.Text).Contains("^") == true || (Nom_du_tournoi.Text).Contains("à") == true || (Nom_du_tournoi.Text).Contains("@") == true || (Nom_du_tournoi.Text).Contains(")") == true || (Nom_du_tournoi.Text).Contains("]") == true || (Nom_du_tournoi.Text).Contains("=") == true || (Nom_du_tournoi.Text).Contains("}") == true || (Nom_du_tournoi.Text).Contains("^") == true || (Nom_du_tournoi.Text).Contains("¨") == true || (Nom_du_tournoi.Text).Contains("°") == true || (Nom_du_tournoi.Text).Contains("+") == true || (Nom_du_tournoi.Text).Contains("$") == true || (Nom_du_tournoi.Text).Contains("£") == true || (Nom_du_tournoi.Text).Contains("¤") == true || (Nom_du_tournoi.Text).Contains("ù") == true || (Nom_du_tournoi.Text).Contains("%") == true || (Nom_du_tournoi.Text).Contains("*") == true || (Nom_du_tournoi.Text).Contains("µ") == true || (Nom_du_tournoi.Text).Contains(",") == true || (Nom_du_tournoi.Text).Contains("?") == true || (Nom_du_tournoi.Text).Contains(";") == true || (Nom_du_tournoi.Text).Contains(".") == true || (Nom_du_tournoi.Text).Contains(":") == true || (Nom_du_tournoi.Text).Contains("/") == true || (Nom_du_tournoi.Text).Contains("!") == true || (Nom_du_tournoi.Text).Contains("§") == true)

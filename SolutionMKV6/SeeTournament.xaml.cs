@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -35,7 +37,7 @@ namespace SolutionMKV6
 
                 foreach (var score in joueur.Scores)
                 {
-                    ScoresJoueur[score.NumCourse-1] = score;
+                    ScoresJoueur[score.NumCourse - 1] = score;
                 }
 
                 for (int i = 0; i < ScoresJoueur.Length; i++)
@@ -46,11 +48,35 @@ namespace SolutionMKV6
                     }
                 }
 
-                JoueurDisplayList.Add(new JoueurDisplay($"{joueur.Nom} ({joueur.Personnage}/{joueur.Kart})", ScoresJoueur[0], ScoresJoueur[1], ScoresJoueur[2], ScoresJoueur[3]));
+                JoueurDisplayList.Add(new JoueurDisplay($"{joueur.Nom}\n({joueur.Personnage}/{joueur.Kart})", ScoresJoueur[0], ScoresJoueur[1], ScoresJoueur[2], ScoresJoueur[3]));
             }
 
             this.Grid1.ItemsSource = JoueurDisplayList;
             //this.Grid1.ItemsSource = tournamentRecent.Joueurs;
+
+            this.Title = $"Gestionnaire des tournois : consultation de \"{tournamentRecent.Nom}\"";
+            this.LblNom.Content = "Nom du tournoi : " + tournamentRecent.Nom;
+            this.LblDate.Content = "Date : " + tournamentRecent.Date.ToString();
+            this.LblModeJeu.Content = "Mode de jeu : " + tournamentRecent.ModeJeu;
+            this.LblVitesse.Content = "Vitesse : " + tournamentRecent.Vitesse;
+
+            if (tournamentRecent.EnEquipe)
+            {
+                this.LblEnEquipe.Content = "Tournoi par équipe";
+            }
+            else
+            {
+                this.LblEnEquipe.Content = "Tournoi chacun pour soi";
+            }
+
+            if (tournamentRecent.AvecIA)
+            {
+                this.LblAvecIA.Content = "Tournoi avec IA";
+            }
+            else
+            {
+                this.LblAvecIA.Content = "Tournoi sans IA";
+            }
 
 
 
@@ -60,12 +86,6 @@ namespace SolutionMKV6
         {
             //this.lastSelectedTournament = (Tournament)e.AddedCells[0].Item;
 
-        }
-
-        private void Button_Add(object sender, RoutedEventArgs e)
-        {
-            //Score scar = new Score(, 100);
-            //passerelle.addScoreToJoueur(scar);
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)
@@ -117,7 +137,7 @@ namespace SolutionMKV6
                     }
                 }
 
-                JoueurDisplayList.Add(new JoueurDisplay($"{joueur.Nom} ({joueur.Personnage}/{joueur.Kart})", ScoresJoueur[0], ScoresJoueur[1], ScoresJoueur[2], ScoresJoueur[3]));
+                JoueurDisplayList.Add(new JoueurDisplay($"{joueur.Nom}\n({joueur.Personnage}/{joueur.Kart})", ScoresJoueur[0], ScoresJoueur[1], ScoresJoueur[2], ScoresJoueur[3]));
             }
 
             this.Grid1.ItemsSource = JoueurDisplayList;
@@ -131,18 +151,47 @@ namespace SolutionMKV6
             {
                 MessageBox.Show($"Une erreur est apparue lors de la sauvegarde : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
 
-        }
-
-        private void Button_Refresh(object sender, RoutedEventArgs e)
-        {
 
         }
 
         private void Button_Export(object sender, RoutedEventArgs e)
         {
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "Fichier CSV (*.csv)|*.csv|Fichier JSON (*.json)|*.json;*.JSON",
+                Title = "Exportation des résultats"
+            };
+            if ((bool)sfd.ShowDialog())
+            {
+                try
+                {
 
+                    if (File.Exists(sfd.FileName))
+                    {
+                        File.Delete(sfd.FileName);
+                    }
+
+                    if (sfd.FileName.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        File.WriteAllText(sfd.FileName, passerelle.generateJSON(tournamentRecent));
+                    }
+                    else if (sfd.FileName.EndsWith(".csv", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        File.WriteAllText(sfd.FileName, passerelle.generateCSV(tournamentRecent));
+                    }
+                    else
+                    {
+                        throw new Exception($"Erreur dans le chemin d'accès : \"{sfd.FileName}\"");
+                    }
+
+                    MessageBox.Show("La sauvegarde s'est effectuée avec succès.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Une erreur est apparue lors de la sauvegarde : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
     }

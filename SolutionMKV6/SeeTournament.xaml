@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SolutionMKV6"
         mc:Ignorable="d"
-        Title="SeeTournament" Height="450" Width="800" ResizeMode="NoResize">
+        Title="Gestionnaire des tournois : consultation du tournoi" Height="450" Width="800" ResizeMode="NoResize">
     <Grid Focusable="True">
-        <Grid.Background>
+        <!--<Grid.Background>
             <ImageBrush ImageSource="284069_original.jpg"></ImageBrush>
-        </Grid.Background>
-        <DataGrid x:Name="Grid1" HorizontalAlignment="Left" Height="280" Margin="10,80,0,0" VerticalAlignment="Top" Width="535"  AutoGenerateColumns="False" SelectedCellsChanged="DataGridSelectedCellsChanged">
+        </Grid.Background>-->
+        <DataGrid x:Name="Grid1" HorizontalAlignment="Left" Height="386" Margin="50,10,0,0" VerticalAlignment="Top" Width="473"  AutoGenerateColumns="False" SelectedCellsChanged="DataGridSelectedCellsChanged" RowHeight="45">
             <!--<DataGrid.Columns>
                 <DataGridTextColumn Header="id" x:Name="idTour" Binding="{Binding Id}" Width="70"></DataGridTextColumn>
                 <DataGridTextColumn Header="Joueurs" x:Name="ListeJoueur" Binding="{Binding Joueurs}" Width="70"></DataGridTextColumn>
@@ -28,11 +28,14 @@
                 <DataGridTextColumn Header="Total courses" x:Name="Total" Binding="{Binding Total}" Width="Auto" IsReadOnly="True"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="550,80,0,0" VerticalAlignment="Top" Width="90" Height="40" Click="Button_Add"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="550,160,0,0" VerticalAlignment="Top" Width="80"  Height="40" Click="Button_Edit"/>
-        <Button Content="Refresh" HorizontalAlignment="Left" Margin="550,240,0,0" VerticalAlignment="Top" Width="80" Height="40" Click="Button_Refresh"/>
-        <Button Content="Export" HorizontalAlignment="Left" Margin="550,320,0,0" VerticalAlignment="Top" Width="80" Height="40" Click="Button_Export"/>
-        <Label Content="Modifer les tournois" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Width="300" TextOptions.TextHintingMode="Animated" FontSize="16" Height="30" Foreground="white" />
+        <Button Content="Sauvegarder" HorizontalAlignment="Left" Margin="644,311,0,0" VerticalAlignment="Top" Width="100"  Height="40" Click="Button_Edit"/>
+        <Button Content="Exporter" HorizontalAlignment="Left" Margin="644,356,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="Button_Export"/>
+        <Label Content="Nom" Name="LblNom" HorizontalAlignment="Left" Margin="528,10,0,0" VerticalAlignment="Top" Width="216" BorderThickness="0,0,1,1" BorderBrush="DarkGray"/>
+        <Label Content="Date" Name="LblDate" HorizontalAlignment="Left" Margin="528,42,0,0" VerticalAlignment="Top" Width="216" BorderThickness="0,0,1,1" BorderBrush="DarkGray"/>
+        <Label Content="ModeJeu" Name="LblModeJeu" HorizontalAlignment="Left" Margin="528,106,0,0" VerticalAlignment="Top" Width="216" BorderThickness="0,0,1,1" BorderBrush="DarkGray"/>
+        <Label Content="Vitesse" Name="LblVitesse" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" Width="216" BorderThickness="0,0,1,1" BorderBrush="DarkGray"/>
+        <Label Content="EnEquipe" Name="LblEnEquipe" HorizontalAlignment="Left" Margin="528,138,0,0" VerticalAlignment="Top" Width="216" BorderThickness="0,0,1,1" BorderBrush="DarkGray"/>
+        <Label Content="AvecIA" Name="LblAvecIA" HorizontalAlignment="Left" Margin="528,170,0,0" VerticalAlignment="Top" Width="216" BorderThickness="0,0,1,1" BorderBrush="DarkGray"/>
 
     </Grid>
 </Window>
